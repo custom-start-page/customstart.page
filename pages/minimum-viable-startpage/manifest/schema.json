@@ -1,0 +1,44 @@
+{
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Your Name"
+    },
+    "linkGroups": {
+      "type": "array",
+      "title": "Links",
+      "items": {
+        "type": "object",
+        "title": "Link Group",
+        "properties": {
+          "groupName": {
+            "type": "string",
+            "title": "Group Name"
+          },
+          "items": {
+            "type": "array",
+            "title": "Links",
+            "items": {
+              "type": "object",
+              "title": "Link",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "title": "Name"
+                },
+                "shortcutKey": {
+                  "type": "string",
+                  "title": "Shortcut Key"
+                },
+                "url": {
+                  "type": "string",
+                  "title": "URL"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

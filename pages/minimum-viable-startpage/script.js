@@ -1,4 +1,3 @@
-const NAME = "John";
 const WELCOME_MESSAGE_TEMPLATE = ["night", "morning", "afternoon", "evening"];
 
 // All shortcuts are in a `SHORTCUT_STARTER+shortcutKey` format.
@@ -12,32 +11,41 @@ const SHORTCUT_TIMEOUT = 1500;
 // The groups of links are generated from this object. Edit it to edit the page's contents.
 // shortcutKey must hold an all-lowercase single button. Theoretically should work with values like `esc` and `f1`,
 // but intended to be used with just regular latin letters.
-const MASTER_MAP = [
+const DATA = {
+  "name": "Harvey",
+  "linkGroups": [
     {
-        "groupName": "Studies",
-        "items":[
-            {"name": "Item A", "shortcutKey": "q", "url": "https://google.com/?q=q"},
-            {"name": "Item B", "shortcutKey": "w", "url": "https://google.com/?q=w"},
-            {"name": "Item C", "shortcutKey": "e", "url": "https://google.com/?q=e"}
-        ]
+      "items": [
+        {
+          "name": "YouTube",
+          "url": "youtube.co.uk",
+          "shortcutKey": "a"
+        },
+        {
+          "name": "Spotify",
+          "url": "spotify.com",
+          "shortcutKey": "b"
+        }
+      ],
+      "groupName": "Fun"
     },
     {
-        "groupName": "Work",
-        "items":[
-            {"name": "Item D", "shortcutKey": "a", "url": "https://google.com/?q=a"},
-            {"name": "Item E", "shortcutKey": "s", "url": "https://google.com/?q=s"},
-            {"name": "Item F", "shortcutKey": "d", "url": "https://google.com/?q=d"}
-        ]
-    },
-    {
-        "groupName": "Personal",
-        "items":[
-            {"name": "Item I", "shortcutKey": "z", "url": "https://google.com/?q=z"},
-            {"name": "Item J", "shortcutKey": "x", "url": "https://google.com/?q=x"},
-            {"name": "Item K", "shortcutKey": "c", "url": "https://google.com/?q=c"}
-        ]
+      "items": [
+        {
+          "name": "Feedly",
+          "url": "feedly.co.uk",
+          "shortcutKey": "c"
+        },
+        {
+          "name": "GitHub",
+          "url": "github.com",
+          "shortcutKey": "d"
+        }
+      ],
+      "groupName": "Productivity"
     }
-]
+  ]
+};
 
 let $container = document.getElementById("content");
 let getUrl = {};
@@ -50,13 +58,13 @@ function setupWelcomeMessage(){
     let curHours = new Date().getHours();
     curHours = Math.floor(curHours/6); // Simply dividing current hours by 6 proves to be a good enough aproximation.
     if (curHours == 4) curHours = 3;
-    let welcome = "Good " + WELCOME_MESSAGE_TEMPLATE[curHours] + ", " + NAME;
+    let welcome = "Good " + WELCOME_MESSAGE_TEMPLATE[curHours] + ", " + DATA.name;
     document.getElementById("welcome-string").innerHTML = welcome;
 }
 
 function setupGroups(){
-    for (let i = 0; i < MASTER_MAP.length; i++){
-        let curGroupData = MASTER_MAP[i];
+    for (let i = 0; i < DATA.linkGroups.length; i++){
+        let curGroupData = DATA.linkGroups[i];
 
         let group = document.createElement("div");
         group.className = "group";
