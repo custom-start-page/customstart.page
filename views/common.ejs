@@ -10,9 +10,5 @@
     </head>
     <body>
         <%- body %>
-        <script>
-            window.config = <%- JSON.stringify({ dev: global.config.dev, useServiceWorker: global.config.useServiceWorker }) %>;
-        </script>
-        <script src="/js/scripts.js"></script>
     </body>
 </html>
