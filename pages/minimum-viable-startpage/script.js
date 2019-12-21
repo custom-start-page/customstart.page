@@ -11,41 +11,7 @@ const SHORTCUT_TIMEOUT = 1500;
 // The groups of links are generated from this object. Edit it to edit the page's contents.
 // shortcutKey must hold an all-lowercase single button. Theoretically should work with values like `esc` and `f1`,
 // but intended to be used with just regular latin letters.
-const DATA = {
-  "name": "Harvey",
-  "linkGroups": [
-    {
-      "items": [
-        {
-          "name": "YouTube",
-          "url": "youtube.co.uk",
-          "shortcutKey": "a"
-        },
-        {
-          "name": "Spotify",
-          "url": "spotify.com",
-          "shortcutKey": "b"
-        }
-      ],
-      "groupName": "Fun"
-    },
-    {
-      "items": [
-        {
-          "name": "Feedly",
-          "url": "feedly.co.uk",
-          "shortcutKey": "c"
-        },
-        {
-          "name": "GitHub",
-          "url": "github.com",
-          "shortcutKey": "d"
-        }
-      ],
-      "groupName": "Productivity"
-    }
-  ]
-};
+const DATA = new Storage('data').get();
 
 let $container = document.getElementById("content");
 let getUrl = {};

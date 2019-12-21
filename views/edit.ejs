@@ -1,2 +1,18 @@
-<div>Edit</div>
-<%- schema %>
+<div class="container">
+    <div class="col-sm-12">
+        <header class="page-header">
+            <h1>Edit</h1>
+        </header>
+        <div id="form"></div>
+    </div>
+</div>
+
+<script>
+    const SCHEMA = <%- schema %>;
+</script>
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-jsonschema-form/dist/react-jsonschema-form.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="/js/storage.js"></script>
+<script type="text/babel" src="/js/scripts.js"></script>
