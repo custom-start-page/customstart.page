@@ -11,7 +11,7 @@ const SHORTCUT_TIMEOUT = 1500;
 // The groups of links are generated from this object. Edit it to edit the page's contents.
 // shortcutKey must hold an all-lowercase single button. Theoretically should work with values like `esc` and `f1`,
 // but intended to be used with just regular latin letters.
-const DATA = new Storage('data').get();
+const DATA = new Storage('data-minimum-viable-startpage').get();
 
 let $container = document.getElementById("content");
 let getUrl = {};

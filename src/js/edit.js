@@ -4,7 +4,7 @@
 // import Form from "react-jsonschema-form";
 const Form = JSONSchemaForm.default;
 
-const storage = new Storage('data');
+const storage = new Storage('data-' + THEME_NAME);
 
 const submit = (data) => {
     storage.set(data.formData);

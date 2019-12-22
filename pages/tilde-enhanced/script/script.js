@@ -216,7 +216,7 @@ const CONFIG = {
   twentyFourHourClock: true,
 };
 
-const DATA = new Storage('data').get();
+const DATA = new Storage('data-tilde-enhanced').get();
 
 if (DATA.commands) {
   CONFIG.commands = DATA.commands;

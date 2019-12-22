@@ -14,6 +14,7 @@ module.exports = function() {
             layout: 'common',
             relativeUrl: '',
             schema: schema,
+            themeName: name,
         });
     });
 
