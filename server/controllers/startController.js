@@ -18,6 +18,16 @@ module.exports = function() {
         });
     });
 
+    app.get('/start/:themeName/preview', function (req, res, next) {
+        const themeName = req.params.themeName;
+
+        res.render('preview', {
+            layout: 'common',
+            relativeUrl: '',
+            themeName: themeName,
+        });
+    });
+
     // Render startpage.
     app.get('/start/*', function (req, res, next) {
         const options = {
@@ -29,13 +39,18 @@ module.exports = function() {
             }
         };
 
+
         const filePath = req.params[0];
 
         logger.info(filePath);
 
-        res.sendFile(filePath, options, function (err) {
-            if (err)
-                next(err)
-        });
+        if (filePath.endsWith('/') || filePath.includes('.')) {
+            res.sendFile(filePath, options, function (err) {
+                if (err)
+                    next(err)
+            });
+        } else {
+            res.redirect(req.url + '/');
+        }
     });
 };

@@ -8,6 +8,8 @@ const storage = new Storage('data-' + THEME_NAME);
 
 const submit = (data) => {
     storage.set(data.formData);
+
+    window.parent.reloadPreview();
 };
 
 ReactDOM.render((
@@ -17,5 +19,7 @@ ReactDOM.render((
         // onChange={log("changed")}
         onSubmit={submit}
         // onError={log("errors")}
-    />
+    >
+        <button type="submit" class="btn btn-info">Update</button>
+    </Form>
 ), document.getElementById("form"));
