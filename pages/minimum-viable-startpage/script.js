@@ -20,6 +20,10 @@ let $shortcutDisplayList = document.getElementsByClassName("shortcut");
 let listeningForShortcut = false;
 let listenerTimeout;
 
+function setupBackgroundImage(){
+    document.body.style.backgroundImage = `url(${DATA.background})`;
+}
+
 function setupWelcomeMessage(){
     let curHours = new Date().getHours();
     curHours = Math.floor(curHours/6); // Simply dividing current hours by 6 proves to be a good enough aproximation.
@@ -84,6 +88,7 @@ function shortcutListener(e) {
 }
 
 function main(){
+    setupBackgroundImage();
     setupWelcomeMessage();
     setupGroups();
     document.addEventListener('keyup', shortcutListener, false);

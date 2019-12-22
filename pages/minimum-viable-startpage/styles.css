@@ -4,14 +4,14 @@
 :root {
     --bg-color: #223030;
     --text-color: #dddddd;
-    --bg-image: url("assets/bg.jpg");
     --SHORTCUT_TIMEOUT: 1.5s;
 }
 body {
     padding: 0;
     margin: 0;
 
-    background: var(--bg-image);
+    /* Set via JS */
+    /* background: var(--bg-image); */
     background-color: var(--bg-color);
     background-size: cover;
     color: var(--text-color);

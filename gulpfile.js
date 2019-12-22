@@ -8,10 +8,8 @@ var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var babel = require('gulp-babel');
 var rename = require('gulp-rename');
-var concat = require('gulp-concat');
 var notifier = require('node-notifier');
 var nodemon = require('nodemon');
-var fs = require('fs');
 
 //notifier.logLevel(0);
 
@@ -95,4 +93,3 @@ gulp.task('watch', function() {
 
 // Default - runs the scripts, styles and watch tasks: 'gulp' will run this task
 gulp.task('default', ['styles', 'scripts', 'start', 'watch'])
-
