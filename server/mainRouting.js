@@ -1,17 +1,11 @@
 const express = require('express');
 const request = require('request');
 
-const app =  require('./app.js');
+const app =  require('./app.js').main;
 const logger = require('./logger.js');
 const config = require('./config.json');
 
-// Required dependencies:
-// app, express, config, logger
-const routing = function(dependencies) {
-    for (let key in dependencies) {
-        global[key] = dependencies[key];
-    }
-
+const routing = function() {
     // Render index.
     app.get('/', function(req, res) {
         res.render('index', {
@@ -21,17 +15,17 @@ const routing = function(dependencies) {
     });
 
     require('./controllers/startController.js')();
+
     /////////////////
     // Statuses
     /////////////////
     app.use(express.static('./public'));
-    app.use(express.static('./pages'));
 
     /////////////////
     // Statuses
     /////////////////
 
-    if(global.config.dev == true) {
+    if(config.dev == true) {
         app.use(express.static('./src'));
     }
 

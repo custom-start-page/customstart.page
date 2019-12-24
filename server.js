@@ -2,11 +2,12 @@ const config = require('./server/config.json');
 
 // Allows config to be used in .ejs files too.
 global.config = config;
+global.config.fullDomain = 'http://' + config.domain + ':' + config.port;
 
 // Custom modules
 const logger = require('./server/logger.js');
-const app = require('./server/app.js');
-require('./server/routing.js');
+const app = require('./server/app.js').app;
+require('./server/mainRouting.js');
 
 /////////////////
 // Functions

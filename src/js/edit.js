@@ -20,6 +20,6 @@ ReactDOM.render((
         onSubmit={submit}
         // onError={log("errors")}
     >
-        <button type="submit" class="btn btn-info">Update</button>
+        <button type="submit" className="btn btn-info">Update</button>
     </Form>
 ), document.getElementById("form"));

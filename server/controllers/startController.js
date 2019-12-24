@@ -1,25 +1,27 @@
 const logger = require('../logger');
-const app = require('../app');
+const app = require('../app').start;
 const path = require('path');
 const appDir = path.dirname(require.main.filename);
 const fs = require('fs');
 
-module.exports = function() {
-    app.get('/start/:name/edit', function (req, res, next) {
-        const name = req.params.name;
+logger.info(app);
 
-        const schema = fs.readFileSync('./pages/' + name + '/manifest/schema.json', 'utf8');
+module.exports = function() {
+    app.get('/edit', function (req, res, next) {
+        const themeName = req.vhost[0];
+
+        const schema = fs.readFileSync('./pages/' + themeName + '/manifest/schema.json', 'utf8');
 
         res.render('edit', {
             layout: 'common',
             relativeUrl: '',
             schema: schema,
-            themeName: name,
+            themeName: themeName,
         });
     });
 
-    app.get('/start/:themeName/preview', function (req, res, next) {
-        const themeName = req.params.themeName;
+    app.get('/preview', function (req, res, next) {
+        const themeName = req.vhost[0];
 
         res.render('preview', {
             layout: 'common',
@@ -29,9 +31,12 @@ module.exports = function() {
     });
 
     // Render startpage.
-    app.get('/start/*', function (req, res, next) {
+    app.get('/*', function (req, res, next) {
+        const themeName = req.vhost[0];
+        const filePath = req.params[0] || 'index.html';
+
         const options = {
-            root: path.join(appDir, 'pages'),
+            root: path.join(appDir, 'pages/' + themeName),
             dotfiles: 'deny',
             headers: {
                 'x-timestamp': Date.now(),
@@ -39,18 +44,20 @@ module.exports = function() {
             }
         };
 
-
-        const filePath = req.params[0];
-
         logger.info(filePath);
 
-        if (filePath.endsWith('/') || filePath.includes('.')) {
-            res.sendFile(filePath, options, function (err) {
-                if (err)
-                    next(err)
-            });
-        } else {
-            res.redirect(req.url + '/');
-        }
+        res.sendFile(filePath, options, function (err) {
+            if (err)
+                next(err)
+        });
+
+        // if (filePath.endsWith('/') || filePath.includes('.')) {
+        //     res.sendFile(filePath, options, function (err) {
+        //         if (err)
+        //             next(err)
+        //     });
+        // } else {
+        //     res.redirect(req.url + '/');
+        // }
     });
 };

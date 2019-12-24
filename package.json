@@ -19,11 +19,13 @@
     "babel-polyfill": "^6.26.0",
     "bunyan": "^1.8.12",
     "compression": "^1.7.2",
+    "cors": "^2.8.5",
     "ejs": "^2.5.8",
     "express": "^4.16.3",
     "express-ejs-layouts": "^1.1.0",
     "national-geographic-api": "^1.4.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "vhost": "^3.0.2"
   },
   "devDependencies": {
     "babel-preset-env": "^1.6.1",
