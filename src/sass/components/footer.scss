@@ -2,4 +2,12 @@
     background-color:#326cf2;
     padding:10px 0;
     color:white;
+
+    a {
+        color:white;
+
+        &:hover, &:focus {
+            color:white;
+        }
+    }
 }
