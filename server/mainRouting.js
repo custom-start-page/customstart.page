@@ -8,9 +8,45 @@ const config = require('./config.json');
 const routing = function() {
     // Render index.
     app.get('/', function(req, res) {
+        const themes = [
+            {
+                "name": "Minimal Viable Startpage",
+                "slug": "minimum-viable-startpage",
+                "author": {
+                    "name": "0-Tikaro",
+                    "link": "https://github.com/0-Tikaro/minimum-viable-startpage"
+                }
+            },
+            {
+                "name": "Tilde Enhanced",
+                "slug": "tilde-enhanced",
+                "author": {
+                    "name": "Ozencb",
+                    "link": "https://github.com/Ozencb/tilde-enhanced"
+                }
+            },
+            {
+                "name": "Sui",
+                "slug": "sui",
+                "author": {
+                    "name": "jeroenpardon",
+                    "link": "https://github.com/jeroenpardon/sui/"
+                }
+            },
+            {
+                "name": "GaugeK's",
+                "slug": "gaugek",
+                "author": {
+                    "name": "GaugeK",
+                    "link": "https://gitlab.com/GaugeK/startpage"
+                }
+            },
+        ];
+
         res.render('index', {
             layout: 'common',
             relativeUrl: '',
+            themes: themes,
         });
     });
 
@@ -25,7 +61,7 @@ const routing = function() {
     // Statuses
     /////////////////
 
-    if(config.dev == true) {
+    if (config.dev == true) {
         app.use(express.static('./src'));
     }
 

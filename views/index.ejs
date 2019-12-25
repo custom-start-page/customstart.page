@@ -4,22 +4,15 @@
     </div>
     <p class="text-center">pick a theme</p>
     <div class="row">
-        <a href="http://minimum-viable-startpage.<%- config.domain %>:<%- config.port %>/preview" class="col-sm-4">
-            <h2>Minimal Viable Startpage</h2>
-            <img width="100%" src="https://raw.githubusercontent.com/0-Tikaro/minimum-viable-startpage/master/docs/screenshot.png" />
-        </a>
-        <a href="http://tilde-enhanced.<%- config.domain %>:<%- config.port %>/preview" class="col-sm-4">
-            <h2>Tilde Enhanced</h2>
-            <img width="100%" src="https://raw.githubusercontent.com/Ozencb/tilde-enhanced/master/assets/screenshot.png" />
-        </a>
-        <a href="http://sui.<%- config.domain %>:<%- config.port %>/preview" class="col-sm-4">
-            <h2>Sui</h2>
-            <img width="100%" src="https://camo.githubusercontent.com/3eb1da4e659aa89a992f94a89790cdd9fa8ce3e9/68747470733a2f2f692e696d6775722e636f6d2f4a3464375133442e706e67" />
-        </a>
-        <a href="http://gaugek.<%- config.domain %>:<%- config.port %>/preview" class="col-sm-4">
-            <h2>GaugeK's</h2>
-            <img width="100%" src="https://i.redd.it/2oi572alvkk31.png" />
-        </a>
+        <% for (let theme of themes) { %>
+            <div class="col-sm-4">
+                <a href="http://<%= theme.slug %>.<%- config.domain %>:<%- config.port %>/preview">
+                    <h2><%= theme.name %></h2>
+                    <img width="100%" src="http://<%= theme.slug %>.<%- config.domain %>:<%- config.port %>/manifest/preview.png" />
+                    <a href="<%= theme.author.link %>" target="_blank">Forked from <%= theme.author.name %></a>
+                </a>
+            </div>
+        <% } %>
     </div>
 </div>
 <footer class="main-footer">
