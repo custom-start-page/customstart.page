@@ -1,2 +1,55 @@
 {
+  "linkGroups": [
+    {
+      "links": [
+        {
+          "name": "yt",
+          "url": "https://youtube.com/"
+        },
+        {
+          "url": "https://youtube.com/feed/subscriptions",
+          "name": "yts"
+        },
+        {
+          "url": "https://mail.google.com",
+          "name": "mail"
+        }
+      ],
+      "category": "Stuff"
+    },
+    {
+      "links": [
+        {
+          "url": "https://www.reddit.com/",
+          "name": "home"
+        },
+        {
+          "url": "https://www.reddit.com/r/Unixporn",
+          "name": "r/up"
+        },
+        {
+          "url": "https://www.reddit.com/me/m/linux",
+          "name": "m/nix"
+        }
+      ],
+      "category": "Reddit"
+    },
+    {
+      "links": [
+        {
+          "url": "https://discordapp.com/channels/@me",
+          "name": "discord"
+        },
+        {
+          "url": "https://twitter.com/",
+          "name": "twitter"
+        },
+        {
+          "url": "https://linuxrocks.online/web/getting-started",
+          "name": "masto"
+        }
+      ],
+      "category": "Social"
+    }
+  ]
 }

@@ -12,14 +12,17 @@ const submit = (data) => {
     window.parent.reloadPreview();
 };
 
-ReactDOM.render((
-    <Form
-        schema={SCHEMA}
-        formData={storage.get()}
-        // onChange={log("changed")}
-        onSubmit={submit}
-        // onError={log("errors")}
-    >
-        <button type="submit" className="btn btn-info">Update</button>
-    </Form>
-), document.getElementById("form"));
+storage.get()
+    .then(formData => {
+        ReactDOM.render((
+            <Form
+                schema={SCHEMA}
+                formData={formData}
+                // onChange={log("changed")}
+                onSubmit={submit}
+                // onError={log("errors")}
+            >
+                <button type="submit" className="btn btn-info">Update</button>
+            </Form>
+        ), document.getElementById("form"));
+    });

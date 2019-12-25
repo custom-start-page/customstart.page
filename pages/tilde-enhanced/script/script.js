@@ -17,133 +17,14 @@ const CONFIG = {
    * Update line 11 and 13 if you prefer using Google.
    */
   commands: [
-    {
-      name: 'Duckduckgo',
-      key: '*',
-      url: 'https://duckduckgo.com',
-      search: '/?q={}',
-      color: '#DE5833',
-    },
-    {
-      category: 'General',
-      name: 'Mail',
-      key: 'm',
-      url: 'https://gmail.com',
-      search: '/#search/text={}',
-      color: 'linear-gradient(135deg, #dd5145, #dd5145)',
-      icon: 'mail',
-      quickLaunch: true,
-    },
-    {
-      category: 'General',
-      name: 'Drive',
-      key: 'd',
-      url: 'https://drive.google.com',
-      search: '/drive/search?q={}',
-      color: 'linear-gradient(135deg, #FFD04B, #1EA362, #4688F3)',
-      icon: 'drive',
-      quickLaunch: false,
-    },
-    {
-      category: 'General',
-      name: 'LinkedIn',
-      key: 'l',
-      url: 'https://linkedin.com',
-      search: '/search/results/all/?keywords={}',
-      color: 'linear-gradient(135deg, #006CA4, #0077B5)',
-      icon: 'linkedin',
-      quickLaunch: true,
-    },
-    {
-      category: 'Tech',
-      name: 'GitHub',
-      key: 'g',
-      url: 'https://github.com',
-      search: '/search?q={}',
-      color: 'linear-gradient(135deg, #2b2b2b, #3b3b3b)',
-      icon: 'github',
-      quickLaunch: true,
-    },
-    {
-      category: 'Tech',
-      name: 'StackOverflow',
-      key: 's',
-      url: 'https://stackoverflow.com',
-      search: '/search?q={}',
-      color: 'linear-gradient(135deg, #53341C, #F48024)',
-      icon: 'stackoverflow',
-      quickLaunch: true,
-    },
-    {
-      category: 'Tech',
-      name: 'Ars Technica',
-      key: 'a',
-      url: 'https://arstechnica.com',
-      search: '/search/?ie=UTF-8&q={}',
-      color: 'linear-gradient(135deg, #FF4E00, #B83800)',
-      icon: 'arstechnica',
-      quickLaunch: false,
-    },
-    {
-      category: 'Fun',
-      name: 'YouTube',
-      key: 'y',
-      url: 'https://youtube.com',
-      search: '/results?search_query={}',
-      color: 'linear-gradient(135deg, #cd201f, #cd4c1f)',
-      icon: 'youtube',
-      quickLaunch: false,
-    },
-    {
-      category: 'Fun',
-      name: 'Netflix',
-      key: 'n',
-      url: 'https://www.netflix.com',
-      color: 'linear-gradient(135deg, #E50914, #CB020C)',
-      icon: 'netflix',
-      quickLaunch: false,
-    },
-    {
-      category: 'Fun',
-      name: 'Twitch',
-      key: 't',
-      url: 'https://www.twitch.tv',
-      search: '/directory/game/{}',
-      color: 'linear-gradient(135deg, #6441a5, #4b367c)',
-      icon: 'twitch',
-      quickLaunch: false,
-    },
-    {
-      category: 'Other',
-      name: 'Reddit',
-      key: 'r',
-      url: 'https://reddit.com',
-      search: '/search?q={}',
-      color: 'linear-gradient(135deg, #FF8456, #FF4500)',
-      icon: 'reddit',
-      quickLaunch: false,
-    },
-    {
-      category: 'Other',
-      name: 'Twitter',
-      key: 'o',
-      url: 'https://twitter.com',
-      color: 'linear-gradient(135deg, #C0A886, #E2DBC8)',
-      icon: 'twitter',
-      quickLaunch: true,
-    },
-    {
-      category: 'Other',
-      name: 'IMDb',
-      key: 'i',
-      url: 'https://imdb.com',
-      search: '/find?ref_=nv_sr_fn&q={}',
-      color: 'linear-gradient(135deg, #7A5F00, #E8B708)',
-      icon: 'imdb',
-      quickLaunch: false,
-    },
+    // {
+    //   name: 'Duckduckgo',
+    //   key: '*',
+    //   url: 'https://duckduckgo.com',
+    //   search: '/?q={}',
+    //   color: '#DE5833',
+    // }
   ],
-
   /**
    * Get suggestions as you type.
    */
@@ -215,12 +96,6 @@ const CONFIG = {
    */
   twentyFourHourClock: true,
 };
-
-const DATA = new Storage('data-tilde-enhanced').get();
-
-if (DATA.commands) {
-  CONFIG.commands = DATA.commands;
-}
 
 const $ = {
   bodyClassAdd: c => $.el('body').classList.add(c),
@@ -923,50 +798,62 @@ class Form {
   }
 }
 
-const queryParser = new QueryParser({
-  commands: CONFIG.commands,
-  pathDelimiter: CONFIG.pathDelimiter,
-  searchDelimiter: CONFIG.searchDelimiter,
-});
+const load = async() => {
+  const DATA = await new Storage('data-tilde-enhanced').get();
 
-const influencers = CONFIG.influencers.map(influencerConfig => {
-  return new {
-    Default: DefaultInfluencer,
-    DuckDuckGo: DuckDuckGoInfluencer,
-    History: HistoryInfluencer,
-  }[influencerConfig.name]({
-    defaultSuggestions: CONFIG.defaultSuggestions,
-    limit: influencerConfig.limit,
-    parseQuery: queryParser.parse,
+  console.log(DATA);
+
+  if (DATA.commands) {
+    CONFIG.commands = DATA.commands;
+  }
+
+  const queryParser = new QueryParser({
+    commands: CONFIG.commands,
+    pathDelimiter: CONFIG.pathDelimiter,
+    searchDelimiter: CONFIG.searchDelimiter,
   });
-});
 
-const suggester = new Suggester({
-  enabled: CONFIG.suggestions,
-  influencers,
-  limit: CONFIG.suggestionsLimit,
-});
+  const influencers = CONFIG.influencers.map(influencerConfig => {
+    return new {
+      Default: DefaultInfluencer,
+      DuckDuckGo: DuckDuckGoInfluencer,
+      History: HistoryInfluencer,
+    }[influencerConfig.name]({
+      defaultSuggestions: CONFIG.defaultSuggestions,
+      limit: influencerConfig.limit,
+      parseQuery: queryParser.parse,
+    });
+  });
 
-const help = new Help({
-  commands: CONFIG.commands,
-  newTab: CONFIG.newTab,
-  suggester,
-  reversedColors: CONFIG.reversedColors,
-});
+  const suggester = new Suggester({
+    enabled: CONFIG.suggestions,
+    influencers,
+    limit: CONFIG.suggestionsLimit,
+  });
 
-const form = new Form({
-  colors: CONFIG.colors,
-  instantRedirect: CONFIG.instantRedirect,
-  newTab: CONFIG.newTab,
-  parseQuery: queryParser.parse,
-  suggester,
-  toggleHelp: help.toggle,
-  quickLaunch: help.launch,
-  reversedColors: CONFIG.reversedColors,
-});
+  const help = new Help({
+    commands: CONFIG.commands,
+    newTab: CONFIG.newTab,
+    suggester,
+    reversedColors: CONFIG.reversedColors,
+  });
 
-new Clock({
-  delimiter: CONFIG.clockDelimiter,
-  toggleHelp: help.toggle,
-  twentyFourHourClock: CONFIG.twentyFourHourClock,
-});
+  const form = new Form({
+    colors: CONFIG.colors,
+    instantRedirect: CONFIG.instantRedirect,
+    newTab: CONFIG.newTab,
+    parseQuery: queryParser.parse,
+    suggester,
+    toggleHelp: help.toggle,
+    quickLaunch: help.launch,
+    reversedColors: CONFIG.reversedColors,
+  });
+
+  new Clock({
+    delimiter: CONFIG.clockDelimiter,
+    toggleHelp: help.toggle,
+    twentyFourHourClock: CONFIG.twentyFourHourClock,
+  });
+};
+
+load();

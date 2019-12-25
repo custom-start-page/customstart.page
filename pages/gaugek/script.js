@@ -57,6 +57,65 @@ function fixSectionHeight() {
 	}
 }
 
+{/* <section>
+	<div class="box">
+		<span class="title">Stuff</span>
+		<div class="content">
+			<a href="https://youtube.com/"><span class="links">yt</span></a>
+			<a href="https://youtube.com/feed/subscriptions"><span class="links">yts</span></a>
+			<a href="https://mail.google.com"><span class="links">mail</span></a>
+		</div>
+	</div>
+</section> */}
+
+
+function addLinks(DATA) {
+	const main = document.querySelector("main");
+
+	function createSection(linkGroup) {
+		const section = document.createElement("section");
+
+		const box = document.createElement("div");
+		box.classList.add("box");
+
+		const title = document.createElement("span");
+		title.classList.add("title");
+		title.innerHTML = linkGroup.category;
+
+		const content = document.createElement('div');
+		content.classList.add('content');
+
+		for (let link of linkGroup.links) {
+			const anchor = document.createElement('a');
+			anchor.setAttribute('href', link.url);
+
+			const anchorSpan = document.createElement('span');
+			anchorSpan.classList.add('links');
+			anchorSpan.innerHTML = link.name;
+
+			anchor.appendChild(anchorSpan);
+
+			content.appendChild(anchor);
+		}
+
+		box.appendChild(title);
+		box.appendChild(content)
+
+		section.appendChild(box);
+
+		return section;
+	}
+
+	for (let linkGroup of DATA.linkGroups) {
+		const section = createSection(linkGroup);
+
+		main.appendChild(section);
+	}
+}
+
+new Storage('data-gaugek').get()
+	.then(DATA => { addLinks(DATA) });
+
 //fixSectionHeight()
 //window.addEventListener('resize', fixSectionHeight)
 // @license-end

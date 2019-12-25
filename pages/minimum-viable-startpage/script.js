@@ -8,11 +8,6 @@ const SHORTCUT_STARTER = 'tab'
 // Also change --SHORTCUT_TIMEOUT in styles.css if you change this option.
 const SHORTCUT_TIMEOUT = 1500;
 
-// The groups of links are generated from this object. Edit it to edit the page's contents.
-// shortcutKey must hold an all-lowercase single button. Theoretically should work with values like `esc` and `f1`,
-// but intended to be used with just regular latin letters.
-const DATA = new Storage('data-minimum-viable-startpage').get();
-
 let $container = document.getElementById("content");
 let getUrl = {};
 
@@ -20,11 +15,11 @@ let $shortcutDisplayList = document.getElementsByClassName("shortcut");
 let listeningForShortcut = false;
 let listenerTimeout;
 
-function setupBackgroundImage(){
+function setupBackgroundImage(DATA){
     document.body.style.backgroundImage = `url(${DATA.background})`;
 }
 
-function setupWelcomeMessage(){
+function setupWelcomeMessage(DATA){
     let curHours = new Date().getHours();
     curHours = Math.floor(curHours/6); // Simply dividing current hours by 6 proves to be a good enough aproximation.
     if (curHours == 4) curHours = 3;
@@ -32,7 +27,7 @@ function setupWelcomeMessage(){
     document.getElementById("welcome-string").innerHTML = welcome;
 }
 
-function setupGroups(){
+function setupGroups(DATA){
     for (let i = 0; i < DATA.linkGroups.length; i++){
         let curGroupData = DATA.linkGroups[i];
 
@@ -88,9 +83,12 @@ function shortcutListener(e) {
 }
 
 function main(){
-    setupBackgroundImage();
-    setupWelcomeMessage();
-    setupGroups();
+    new Storage('data-minimum-viable-startpage').get()
+        .then(DATA => {
+            setupBackgroundImage(DATA);
+            setupWelcomeMessage(DATA);
+            setupGroups(DATA);
+        })
     document.addEventListener('keyup', shortcutListener, false);
 }
 

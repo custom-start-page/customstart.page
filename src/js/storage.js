@@ -5,13 +5,18 @@ class Storage {
     set(obj) {
         localStorage.setItem(this.key, JSON.stringify(obj));
     }
-    get() {
+    async get() {
         const retrievedObject = localStorage.getItem(this.key);
 
         if (retrievedObject) {
             return JSON.parse(retrievedObject);
         }
 
-        return {};
+        return await fetch('/manifest/defaultData.json')
+            .then(res => res.json())
+            .then(out => {
+                return out;
+            })
+            .catch(err => { throw err });
     }
 }
