@@ -1,0 +1,202 @@
+{
+  "linkGroups": [
+    {
+      "links": [
+        {
+          "name": "netflix",
+          "url": "https://netflix.com"
+        },
+        {
+          "name": "vimeo",
+          "url": "https://vimeo.com"
+        },
+        {
+          "name": "youtube",
+          "url": "https://youtube.com/"
+        }
+      ],
+      "name": "video"
+    },
+    {
+      "links": [
+        {
+          "name": "soundcloud",
+          "url": "https://soundcloud.com"
+        },
+        {
+          "name": "lastfm",
+          "url": "https://www.last.fm/user/"
+        },
+        {
+          "name": "bandcamp",
+          "url": "https://bandcamp.com"
+        },
+        {
+          "name": "musicbrainz",
+          "url": "https://musicbrainz.org"
+        }
+      ],
+      "name": "audio"
+    },
+    {
+      "links": [
+        {
+          "name": "pocket",
+          "url": "https://getpocket.com/a/queue/"
+        },
+        {
+          "url": "https://wallabag.org/en",
+          "name": "wallabag"
+        },
+        {
+          "url": "https://evernote.com",
+          "name": "evernote"
+        }
+      ],
+      "name": "saved"
+    },
+    {
+      "links": [
+        {
+          "url": "https://www.heise.de/newsticker/",
+          "name": "heise"
+        },
+        {
+          "url": "https://blog.fefe.de",
+          "name": "fefe"
+        },
+        {
+          "url": "https://www.reddit.com",
+          "name": "reddit"
+        },
+        {
+          "url": "https://www.golem.de",
+          "name": "golem"
+        }
+      ],
+      "name": "news"
+    },
+    {
+      "links": [
+        {
+          "url": "https://www.twitter",
+          "name": "twitter"
+        },
+        {
+          "url": "https://www.xing.com",
+          "name": "xing"
+        },
+        {
+          "url": "https://www.linkedin.com",
+          "name": "linkedin"
+        },
+        {
+          "url": "https://www.reddit.com",
+          "name": "reddit"
+        }
+      ],
+      "name": "social"
+    },
+    {
+      "links": [
+        {
+          "url": "http://swift.org",
+          "name": "swift"
+        },
+        {
+          "url": "https://stackoverflow.com",
+          "name": "stackoverflow"
+        },
+        {
+          "url": "https://devhints.io",
+          "name": "devhints"
+        },
+        {
+          "url": "https://stackexchange.com",
+          "name": "stackex"
+        }
+      ],
+      "name": "docs"
+    },
+    {
+      "links": [
+        {
+          "url": "https://github.com",
+          "name": "github"
+        },
+        {
+          "url": "https://gitlab.com",
+          "name": "gitlab"
+        },
+        {
+          "url": "https://bitbucket.org",
+          "name": "bitbucket"
+        }
+      ],
+      "name": "git"
+    },
+    {
+      "links": [
+        {
+          "url": "https://www.oth-regensburg.de",
+          "name": "home"
+        },
+        {
+          "url": "https://qis.oth-regensburg.de",
+          "name": "qis"
+        },
+        {
+          "url": "https://hisinone-studium.oth-regensburg.de",
+          "name": "hisinone"
+        },
+        {
+          "url": "https://java.fh-regensburg.de",
+          "name": "exams"
+        }
+      ],
+      "name": "uni"
+    },
+    {
+      "links": [
+        {
+          "url": "https://www.mittelbayerische.de",
+          "name": "mittelbayer"
+        },
+        {
+          "url": "https://www.neumarktaktuell.de",
+          "name": "nm-aktuell"
+        },
+        {
+          "url": "http://www.neumarktonline.de",
+          "name": "nm-online"
+        },
+        {
+          "url": "https://www.nordbayern.de",
+          "name": "nordbayern"
+        }
+      ],
+      "name": "news"
+    },
+    {
+      "links": [
+        {
+          "url": "https://lukas.wolfsteiner.media",
+          "name": "copyright"
+        },
+        {
+          "url": "https://travis-ci.com/dotWee/startpage",
+          "name": "travis-ci"
+        },
+        {
+          "url": "https://lukas.wolfsteiner.media",
+          "name": "©2019-me"
+        },
+        {
+          "url": "https://github.com/dotWee/startpage",
+          "name": "sourcecode"
+        }
+      ],
+      "name": "about"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "properties": {
+    "linkGroups": {
+      "type": "array",
+      "title": "Link Group",
+      "description": "Create links grouped by category",
+      "items": {
+        "type": "object",
+        "title": "Link Group",
+        "required": [
+          "category"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Give this a group a name"
+          },
+          "links": {
+            "type": "array",
+            "title": "Links",
+            "items": {
+              "type": "object",
+              "title": "Link",
+              "description": "A sigle link to a website which belongs in the parent group",
+              "required": [
+                "name",
+                "url"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "title": "Name",
+                  "description": "Name of the website you're linking to"
+                },
+                "url": {
+                  "type": "string",
+                  "title": "URL",
+                  "description": "Link with 'http://' to the website"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
