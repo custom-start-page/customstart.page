@@ -33,14 +33,6 @@ const routing = function() {
                     "link": "https://github.com/jeroenpardon/sui/"
                 }
             },
-            {
-                "name": "GaugeK's",
-                "slug": "gaugek",
-                "author": {
-                    "name": "GaugeK",
-                    "link": "https://gitlab.com/GaugeK/startpage"
-                }
-            },
         ];
 
         res.render('index', {
