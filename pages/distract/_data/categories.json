@@ -1,0 +1,89 @@
+[
+    {
+        "name": "video",
+        "links": [
+            ["netflix", "https://netflix.com"],
+            ["vimeo", "https://vimeo.com"],
+            ["youtube", "https://youtube.com/"]
+        ]
+    },
+    {
+        "name": "audio",
+        "links": [
+            ["soundcloud", "https://soundcloud.com/"],
+            ["lastfm", "https://www.last.fm/user/"],
+            ["bandcamp", "https://bandcamp.com/"],
+            ["musicbrainz", "https://musicbrainz.org/"]
+        ]
+    },
+    {
+        "name": "saved",
+        "links": [
+            ["pocket", "https://getpocket.com/a/queue/"],
+            ["wallabag", "https://wallabag.org/en"],
+            ["evernote", "https://evernote.com/"]
+        ]
+    },
+    {
+        "name": "news",
+        "links":[
+            ["heise", "https://www.heise.de/newsticker/"],
+            ["fefe", "https://blog.fefe.de"],
+            ["reddit", "https://www.reddit.com"],
+            ["golem", "https://www.golem.de"]
+        ]
+    },
+    {
+        "name": "social",
+        "links": [
+            ["twitter", "https://www.twitter/"],
+            ["xing", "https://www.xing.com/"],
+            ["linkedin", "https://www.linkedin.com/"],
+            ["reddit", "https://www.reddit.com"]
+        ]
+    },
+    {
+        "name": "docs",
+        "links": [
+            ["swift", "http://swift.org"],
+            ["stackoverflow", "https://stackoverflow.com"],
+            ["devhints", "https://devhints.io"],
+            ["stackex", "https://stackexchange.com"]
+        ]
+    },
+    {
+        "name": "git",
+        "links": [
+            ["github", "https://github.com"],
+            ["gitlab", "https://gitlab.com"],
+            ["bitbucket", "https://bitbucket.org"]
+        ]
+    },
+    {
+        "name": "uni",
+        "links": [
+            ["home", "https://www.oth-regensburg.de"],
+            ["qis", "https://qis.oth-regensburg.de"],
+            ["hisinone", "https://hisinone-studium.oth-regensburg.de"],
+            ["exams", "https://java.fh-regensburg.de"]
+        ]
+    },
+    {
+        "name": "news",
+        "links": [
+            ["mittelbayer", "https://www.mittelbayerische.de"],
+            ["nm-aktuell", "https://www.neumarktaktuell.de"],
+            ["nm-online", "http://www.neumarktonline.de"],
+            ["nordbayern", "https://www.nordbayern.de"]
+        ]
+    },
+    {
+        "name": "about",
+        "links": [
+            ["copyright", "https://lukas.wolfsteiner.media"],
+            ["travis-ci", "https://travis-ci.com/dotWee/startpage"],
+            ["©2019-me", "https://lukas.wolfsteiner.media"],
+            ["sourcecode", "https://github.com/dotWee/startpage"]
+        ]
+    }
+]
