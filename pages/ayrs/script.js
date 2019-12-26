@@ -4,21 +4,19 @@ let read_articles = [];
 function setup_groups() {
   let $container = document.getElementById("content");
 
-  for (var key in SHORTCUT_MAP) {
-    let value = SHORTCUT_MAP[key];
-
+  for (let shortcut of DATA.shortcuts) {
     let group = document.createElement("div");
     group.className = "group";
     $container.appendChild(group);
 
     let link = document.createElement("a");
-    link.setAttribute("href", "https://" + key);
+    link.setAttribute("href", "https://" + shortcut.url);
     group.appendChild(link);
 
     let image = document.createElement("span");
-    image.setAttribute("src", value);
+    image.setAttribute("src", shortcut.name);
 
-    const linkText = document.createTextNode(value);
+    const linkText = document.createTextNode(shortcut.name);
     link.appendChild(linkText);
   }
 }
@@ -99,8 +97,8 @@ async function feed_mix() {
   let mixed_feeds = [];
   let promise_list = [];
 
-  for (let feed_url of Object.keys(FEED_LIST))
-    promise_list.push(feednami.load(feed_url));
+  for (let feed of DATA.feeds)
+    promise_list.push(feednami.load(feed.url));
 
   let feed_list = await Promise.all(
     promise_list.map(p => p.catch(error => null))
@@ -109,7 +107,7 @@ async function feed_mix() {
   // create object
   for (let i in feed_list) {
     const feed = feed_list[i];
-    const feed_title = Object.values(FEED_LIST)[i];
+    const feed_title = DATA.feeds[i].name;
 
     if (feed == null) continue;
     let flist = [];
@@ -185,7 +183,7 @@ function feed_clean() {
 
 function populate_feed(list, fromLocalStorage = false) {
   feed_clean();
-  for (let item of filter_feed(list, fromLocalStorage).slice(0, MAX_FEED_NUM)) {
+  for (let item of filter_feed(list, fromLocalStorage).slice(0, DATA.maxFeedNumber)) {
     feed_add(item.title, item.summary, item.link, item.read_time);
   }
 }
@@ -198,7 +196,7 @@ function flashReloadButon() {
   }, 2000);
 }
 
-function setup_feed(ignoreCache = false) {
+function setup_feed(data, ignoreCache = false) {
   if (ignoreCache) {
     let reloadButton = document.getElementById("reload-button");
     reloadButton.innerText = "RELOADING";
@@ -244,5 +242,13 @@ function inject() {
   reloadButton.onclick = () => setup_feed(true);
 }
 
-main();
+var DATA;
+
+new Storage('data-ayrs').get()
+  .then(data => {
+    DATA = data;
+
+    main();
+  });
+
 window.onload = inject;
