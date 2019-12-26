@@ -49,14 +49,6 @@ const routing = function() {
                     "link": "https://github.com/dotWee/startpage"
                 }
             },
-            {
-                "name": "Vimish",
-                "slug": "vimish",
-                "author": {
-                    "name": "0xhjohnson",
-                    "link": "https://github.com/0xhjohnson/minimal-start"
-                }
-            },
             // {
             //     "name": "",
             //     "slug": "",
