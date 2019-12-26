@@ -1,0 +1,81 @@
+{
+  "linkGroups": [
+    {
+      "links": [
+        {
+          "name": "Localhost",
+          "url": "http://localhost:3000"
+        }
+      ]
+    },
+    {
+      "links": [
+        {
+          "name": "Translate",
+          "url": "https://translate.google.com"
+        },
+        {
+          "name": "Maps",
+          "url": "https://google.co.uk/maps"
+        }
+      ]
+    },
+    {
+      "links": [
+        {
+          "name": "YouTube",
+          "url": "https://www.youtube.com"
+        },
+        {
+          "name": "Netflix",
+          "url": "https://www.netflix.com/browse"
+        },
+        {
+          "name": "Spotify",
+          "url": "https://open.spotify.com"
+        }
+      ]
+    },
+    {
+      "links": [
+        {
+          "name": "Feedly",
+          "url": "https://feedly.com/i/latest"
+        },
+        {
+          "name": "Toggl",
+          "url": "https://www.toggl.com/app/timer"
+        },
+        {
+          "name": "Trello",
+          "url": "https://trello.com"
+        }
+      ]
+    },
+    {
+      "links": [
+        {
+          "name": "GitHub",
+          "url": "https://github.com"
+        },
+        {
+          "name": "Stack Overflow",
+          "url": "https://stackoverflow.com"
+        }
+      ]
+    },
+    {
+      "links": [
+        {
+          "name": "CoinLib",
+          "url": "https://coinlib.io"
+        },
+        {
+          "name": "CoinMarketCap",
+          "url": "https://coinmarketcap.com"
+        }
+      ]
+    }
+  ],
+  "backgroundUrl": "https://images.unsplash.com/photo-1492627223639-6e980361988c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80"
+}

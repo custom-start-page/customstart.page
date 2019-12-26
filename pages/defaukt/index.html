@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="StartApp">
+    <head lang="en">
+        <title>Start | Defaukt</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link href="/css/main.css" rel="stylesheet" type="text/css">
+    </head>
+    <body ng-controller="Background" ng-style="{'background-image':'url(' + backgroundUrl + ')'}" ng-keypress="press($event)">
+        <div class="links-container" ng-hide="hide">
+            <div class="links box" ng-controller="LinksController" ng-cloak>
+                <div class="box-title">
+                    Links
+                </div>
+                <ul>
+                    <li ng-repeat="linkGroup in linkGroups">
+                        <a href="{{ link.url }}" ng-repeat="link in linkGroup.links" ng-bind="link.name"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script src="http://themr.local:1234/js/storage.js"></script>
+        <script src="/js/angular.min.js"></script>
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>

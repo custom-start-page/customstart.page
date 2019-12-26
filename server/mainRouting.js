@@ -49,6 +49,14 @@ const routing = function() {
                     "link": "https://github.com/dotWee/startpage"
                 }
             },
+            {
+                "name": "defaukt",
+                "slug": "defaukt",
+                "author": {
+                    "name": "Harvzor",
+                    "link": "https://github.com/Harvzor/start"
+                }
+            },
             // {
             //     "name": "",
             //     "slug": "",
