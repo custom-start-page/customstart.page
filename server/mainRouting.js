@@ -50,7 +50,7 @@ const routing = function() {
                 }
             },
             {
-                "name": "defaukt",
+                "name": "Defaukt",
                 "slug": "defaukt",
                 "author": {
                     "name": "Harvzor",
