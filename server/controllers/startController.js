@@ -44,8 +44,6 @@ module.exports = function() {
             }
         };
 
-        logger.info(filePath);
-
         res.sendFile(filePath, options, function (err) {
             if (err)
                 next(err)
