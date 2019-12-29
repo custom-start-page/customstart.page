@@ -43,31 +43,32 @@ const styles = function(cb) {
 };
 
 const scripts = function(cb) {
-    gulp.src([
-        'src/js/*.js'
-    ])
-    .pipe(plumber({
-        errorHandler: function (err) {
-            notifier.notify({
-                title: 'Error in scripts task',
-                message: err.message
-            });
+    gulp
+        .src('src/js/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(plumber({
+            errorHandler: function (err) {
+                notifier.notify({
+                    title: 'Error in scripts task',
+                    message: err.message
+                });
 
-            this.emit('end');
-        }
-    }))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(babel({
-        presets: ['env']
-    }))
-    .pipe(uglify())
-    .pipe(gulp.dest('public/js'))
-    .on('end', function() {
-        notifier.notify({
-            title: 'Scripts task completed',
-            message: 'Success'
+                this.emit('end');
+            }
+        }))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(babel({
+            presets: ['@babel/preset-react']
+        }))
+        // .pipe(uglify())
+        .pipe(sourcemaps.write("."))
+        .pipe(gulp.dest('public/js'))
+        .on('end', function() {
+            notifier.notify({
+                title: 'Scripts task completed',
+                message: 'Success'
+            });
         });
-    });
 
     cb()
 };
@@ -90,4 +91,5 @@ const watch = function(cb) {
     cb();
 };
 
+exports.scripts = scripts;
 exports.default = gulp.parallel(styles, scripts, start, watch);
