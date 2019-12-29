@@ -11,9 +11,11 @@ const submit = (data) => {
 
     window.parent.reloadPreview();
 };
+        console.log('ahh')
 
 storage.get()
     .then(formData => {
+        console.log(formData)
         ReactDOM.render((
             <Form
                 schema={SCHEMA}

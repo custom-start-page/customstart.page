@@ -9,6 +9,7 @@ logger.info(app);
 module.exports = function() {
     app.get('/edit', function (req, res, next) {
         const themeName = req.vhost[0];
+        const hideFooter = req.query.hideFooter == 'true' || false;
 
         const schema = fs.readFileSync('./pages/' + themeName + '/manifest/schema.json', 'utf8');
 
@@ -17,6 +18,7 @@ module.exports = function() {
             relativeUrl: '',
             schema: schema,
             themeName: themeName,
+            hideFooter: hideFooter,
         });
     });
 

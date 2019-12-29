@@ -10,5 +10,14 @@
     </head>
     <body>
         <%- body %>
+        <% if (typeof hideFooter === 'undefined' || hideFooter === false) { %>
+            <footer class="main-footer">
+                <div class="container">
+                    <div class="row">
+                        "designed" and built by <a href="https://linktr.ee/harvzor" target="_blank">@harvzor</a>
+                    </div>
+                </div>
+            </footer>
+        <% } %>
     </body>
 </html>

@@ -85,9 +85,9 @@ const routing = function() {
     // Statuses
     /////////////////
 
-    if (config.dev == true) {
-        app.use(express.static('./src'));
-    }
+    // if (config.dev == true) {
+    //     app.use(express.static('./src'));
+    // }
 
     app.use(function(req, res, next) {
         logger.info('404 error: %s', req.originalUrl);
