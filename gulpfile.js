@@ -1,21 +1,17 @@
-// Load plugins
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var cssnano = require('gulp-cssnano');
-var plumber = require('gulp-plumber');
-var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
-var babel = require('gulp-babel');
-var rename = require('gulp-rename');
-var notifier = require('node-notifier');
-var nodemon = require('nodemon');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const cssnano = require('gulp-cssnano');
+const plumber = require('gulp-plumber');
+const sourcemaps = require('gulp-sourcemaps');
+const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
+const rename = require('gulp-rename');
+const notifier = require('node-notifier');
+const nodemon = require('nodemon');
 
-//notifier.logLevel(0);
-
-// Styles - compile custom Sass
-gulp.task('styles', function() {
-    return gulp.src([
+const styles = function(cb) {
+    gulp.src([
         'src/sass/main.scss'
     ])
     .pipe(plumber({
@@ -42,12 +38,13 @@ gulp.task('styles', function() {
             message: 'Success'
         });
     });
-});
 
-// Scripts - compile custom js
-gulp.task('scripts', function() {
-    return gulp.src([
-        'src/js/scripts.js'
+    cb();
+};
+
+const scripts = function(cb) {
+    gulp.src([
+        'src/js/*.js'
     ])
     .pipe(plumber({
         errorHandler: function (err) {
@@ -71,25 +68,26 @@ gulp.task('scripts', function() {
             message: 'Success'
         });
     });
-});
 
-// Start - starts the server and restarts it on file change
-gulp.task('start', function() {
+    cb()
+};
+
+const start = function(cb) {
     nodemon({
         script: 'server.js',
         ext: 'js',
         watch: ['server/*', 'server.js']
-    })
-});
+    });
 
-// Watch - watcher for changes in scss and js files: 'gulp watch' will run these tasks
-gulp.task('watch', function() {
-    // Watch .scss files
-    gulp.watch('src/sass/**/*.scss', ['styles']);
+    cb();
+};
 
-    // Watch .js files
-    gulp.watch('src/js/scripts.js', ['scripts']);
-});
+const watch = function(cb) {
+    gulp.watch('src/sass/**/*.scss', styles);
 
-// Default - runs the scripts, styles and watch tasks: 'gulp' will run this task
-gulp.task('default', ['styles', 'scripts', 'start', 'watch'])
+    gulp.watch('src/js/*.js', scripts);
+
+    cb();
+};
+
+exports.default = gulp.parallel(styles, scripts, start, watch);
