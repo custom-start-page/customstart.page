@@ -1,0 +1,8 @@
+
+<% if (global.config.dev) { %>
+    <script src="<%- config.fullDomain %>/js/dependencies/react.development.js"></script>
+    <script src="<%- config.fullDomain %>/js/dependencies/react-dom.development.js"></script>
+<% } else { %>
+    <script src="<%- config.fullDomain %>/js/dependencies/react.production.js"></script>
+    <script src="<%- config.fullDomain %>/js/dependencies/react-dom.production.min.js"></script>
+<% } %>

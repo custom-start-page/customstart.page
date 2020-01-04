@@ -14,8 +14,7 @@
     const SCHEMA = <%- schema %>;
     const THEME_NAME = '<%- themeName %>';
 </script>
-<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-jsonschema-form/dist/react-jsonschema-form.js"></script>
+<% include ./partials/scripts %>
+<script src="<%- config.fullDomain %>/js/dependencies/react-jsonschema-form.js"></script>
 <script src="<%- config.fullDomain %>/js/storage.min.js"></script>
 <script src="<%- config.fullDomain %>/js/edit.min.js"></script>
