@@ -9,6 +9,9 @@
         <link href="<%- config.fullDomain %>/css/main.css" rel="stylesheet" type="text/css">
     </head>
     <body>
+        <% if (typeof hideFooter === 'undefined' || hideFooter === false) { %>
+            <% include ./partials/header %>
+        <% } %>
         <main>
             <%- body %>
         </main>

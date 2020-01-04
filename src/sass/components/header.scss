@@ -1,0 +1,19 @@
+.site-header {
+    padding:30px;
+    margin-bottom:10px;
+    background-color:#326cf2;
+
+    a {
+        color:white;
+
+        &:hover, &:focus {
+            color:white;
+            text-decoration:none;
+        }
+    }
+
+    h1 {
+        font-family:'Arimo', sans-serif;
+        font-size:60px;
+    }
+}
