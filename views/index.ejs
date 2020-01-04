@@ -3,10 +3,17 @@
     <div class="row">
         <% for (let theme of themes) { %>
             <div class="col-sm-4">
-                <a href="http://<%= theme.slug %>.<%- config.domain %>:<%- config.port %>/preview">
-                    <h2><%= theme.name %></h2>
-                    <img width="100%" src="http://<%= theme.slug %>.<%- config.domain %>:<%- config.port %>/manifest/preview.png" />
-                    <a href="<%= theme.author.link %>" target="_blank">Original artist: <%= theme.author.name %></a>
+                <div class="panel panel-default">
+                    <a href="http://<%= theme.slug %>.<%- config.domain %>:<%- config.port %>/preview">
+                        <div class="panel-heading">
+                            <h2 class="panel-title"><%= theme.name %></h2>
+                        </div>
+                        <img width="100%" src="http://<%= theme.slug %>.<%- config.domain %>:<%- config.port %>/manifest/preview.png" />
+                    </a>
+                    <div class="panel-footer">
+                        by <a href="<%= theme.author.link %>" target="_blank"><%= theme.author.name %></a>
+                    </div>
+                </div>
                 </a>
             </div>
         <% } %>
