@@ -11,11 +11,9 @@ const submit = (data) => {
 
     window.parent.reloadPreview();
 };
-        console.log('ahh')
 
 storage.get()
     .then(formData => {
-        console.log(formData)
         ReactDOM.render((
             <Form
                 schema={SCHEMA}
@@ -24,7 +22,8 @@ storage.get()
                 onSubmit={submit}
                 // onError={log("errors")}
             >
-                <button type="submit" className="btn btn-info">Update</button>
+                <button type="submit" className="btn btn-success">Save and update</button>
+                <button className="btn btn-warning pull-right" onClick={() => {window.parent.location = '/'}}>Finish preview</button>
             </Form>
         ), document.getElementById("form"));
     });
