@@ -9,7 +9,9 @@
         <link href="<%- config.fullDomain %>/css/main.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <%- body %>
+        <main>
+            <%- body %>
+        </main>
         <% if (typeof hideFooter === 'undefined' || hideFooter === false) { %>
             <footer class="main-footer">
                 <div class="container">

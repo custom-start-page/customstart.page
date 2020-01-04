@@ -29,7 +29,7 @@ module.exports = function() {
             layout: 'common',
             relativeUrl: '',
             themeName: themeName,
-            hideFooter: true,
+            hideFooter: false,
         });
     });
 
