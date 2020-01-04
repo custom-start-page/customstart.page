@@ -1,12 +1,25 @@
+// import 'react-tabs/style/react-tabs.css';
+// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+const { Tabs, TabList, Tab, TabPanel } = ReactTabs;
+
 window.reloadPreview = function() {
     document.querySelector('#iframe-preview')
         .contentWindow.location.reload(true);
 };
 
 ReactDOM.render((
-    <Draggable>
-        <div class="edit-container">
-            <iframe class="edit" src="/edit?hideFooter=true"></iframe>
+    <Tabs forceRenderTabPanel="true">
+        <TabList>
+            <Tab>Preview</Tab>
+            <Tab>Edit</Tab>
+        </TabList>
+        <div className="tab-panel-container">
+            <TabPanel>
+                <iframe id="iframe-preview" class="embed-responsive-item" src="/"></iframe>
+            </TabPanel>
+            <TabPanel>
+                <iframe class="edit-container" src="/edit?hideFooter=true"></iframe>
+            </TabPanel>
         </div>
-    </Draggable>
-), document.querySelector("body"));
+    </Tabs>
+), document.querySelector("#preview"));
