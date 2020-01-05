@@ -1,4 +1,4 @@
-// const logger = require('../logger');
+const logger = require('../logger');
 const express = require('express');
 const app = require('../app').start;
 const path = require('path');
@@ -34,10 +34,42 @@ module.exports = function() {
         });
     });
 
-    // Render startpage.
-    app.get('/*', function (req, res, next) {
+    app.get('/', function (req, res, next) {
         const themeName = req.vhost[0];
-        const filePath = req.params[0] || 'index.html';
+
+        res.render('view', {
+            layout: 'common',
+            relativeUrl: '',
+            themeName: themeName,
+            hideFooter: true,
+            noCruft: true,
+        });
+    });
+
+    function getFilePath(req) {
+        if (req.params[0].length === 0) {
+            return 'index.html';
+        }
+
+        let filePath = req.params[0];
+
+        if (filePath.startsWith('view') === false) {
+            return filePath;
+        }
+
+        filePath = filePath.substring(5);
+
+        if (filePath.length === 0) {
+            return 'index.html';
+        }
+
+        return filePath;
+    }
+
+    // Render startpage.
+    app.get(['/*', '/view*'], function (req, res, next) {
+        const themeName = req.vhost[0];
+        const filePath = getFilePath(req);
 
         const options = {
             root: path.join(appDir, 'pages/' + themeName),

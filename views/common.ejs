@@ -12,9 +12,13 @@
         <% if (typeof hideFooter === 'undefined' || hideFooter === false) { %>
             <% include ./partials/header %>
         <% } %>
-        <main>
+        <% if (typeof noCruft === 'undefined' || noCruft === false) { %>
+            <main>
+                <%- body %>
+            </main>
+        <% } else { %>
             <%- body %>
-        </main>
+        <% } %>
         <% if (typeof hideFooter === 'undefined' || hideFooter === false) { %>
             <footer class="main-footer">
                 <div class="container">
