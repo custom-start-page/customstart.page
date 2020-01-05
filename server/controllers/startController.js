@@ -5,7 +5,6 @@ const fs = require('fs');
 const logger = require('../logger.js');
 const track =  require('../track.js');
 const app = require('../app').start;
-const appDir = path.dirname(require.main.filename);
 
 module.exports = function() {
     app.use('/js/shared/',  express.static('./public/js/shared/'));
@@ -84,7 +83,7 @@ module.exports = function() {
         // }
 
         const options = {
-            root: path.join(appDir, 'pages/' + themeName),
+            root: path.join(global.config.basedir, 'pages/' + themeName),
             dotfiles: 'deny',
             headers: {
                 'x-timestamp': Date.now(),
