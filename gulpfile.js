@@ -44,7 +44,7 @@ const styles = function(cb) {
 
 const scripts = function(cb) {
     gulp
-        .src('src/js/*.js')
+        .src('src/js/**/*.js')
         .pipe(sourcemaps.init())
         .pipe(plumber({
             errorHandler: function (err) {
@@ -86,7 +86,7 @@ const start = function(cb) {
 const watch = function(cb) {
     gulp.watch('src/sass/**/*.scss', styles);
 
-    gulp.watch('src/js/*.js', scripts);
+    gulp.watch('src/js/**/*.js', scripts);
 
     cb();
 };

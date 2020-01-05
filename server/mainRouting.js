@@ -1,5 +1,4 @@
 const express = require('express');
-const request = require('request');
 
 const app =  require('./app.js').main;
 const logger = require('./logger.js');
@@ -77,17 +76,17 @@ const routing = function() {
     require('./controllers/startController.js')();
 
     /////////////////
-    // Statuses
+    // Static
     /////////////////
     app.use(express.static('./public'));
 
+    if (config.dev == true) {
+        app.use(express.static('./src'));
+    }
+
     /////////////////
     // Statuses
     /////////////////
-
-    // if (config.dev == true) {
-    //     app.use(express.static('./src'));
-    // }
 
     app.use(function(req, res, next) {
         logger.info('404 error: %s', req.originalUrl);

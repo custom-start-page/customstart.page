@@ -15,10 +15,10 @@ ReactDOM.render((
         </TabList>
         <div className="tab-panel-container">
             <TabPanel>
-                <iframe id="iframe-preview" class="embed-responsive-item" src="/"></iframe>
+                <iframe id="iframe-preview" className="embed-responsive-item" src="/"></iframe>
             </TabPanel>
             <TabPanel>
-                <iframe class="edit-container" src="/edit?hideFooter=true"></iframe>
+                <iframe className="edit-container" src="/edit?hideFooter=true"></iframe>
             </TabPanel>
         </div>
     </Tabs>

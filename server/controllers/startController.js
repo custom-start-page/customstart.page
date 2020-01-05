@@ -1,12 +1,13 @@
-const logger = require('../logger');
+// const logger = require('../logger');
+const express = require('express');
 const app = require('../app').start;
 const path = require('path');
 const appDir = path.dirname(require.main.filename);
 const fs = require('fs');
 
-logger.info(app);
-
 module.exports = function() {
+    app.use('/js/shared/',  express.static('./public/js/shared/'));
+
     app.get('/edit', function (req, res, next) {
         const themeName = req.vhost[0];
         const hideFooter = req.query.hideFooter == 'true' || false;
