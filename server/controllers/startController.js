@@ -1,14 +1,18 @@
-const logger = require('../logger');
 const express = require('express');
-const app = require('../app').start;
 const path = require('path');
-const appDir = path.dirname(require.main.filename);
 const fs = require('fs');
+
+const logger = require('../logger.js');
+const track =  require('../track.js');
+const app = require('../app').start;
+const appDir = path.dirname(require.main.filename);
 
 module.exports = function() {
     app.use('/js/shared/',  express.static('./public/js/shared/'));
 
     app.get('/edit', function (req, res, next) {
+        // track.pageView(req);
+
         const themeName = req.vhost[0];
         const hideFooter = req.query.hideFooter == 'true' || false;
 
@@ -24,6 +28,8 @@ module.exports = function() {
     });
 
     app.get('/preview', function (req, res, next) {
+        track.pageView(req);
+
         const themeName = req.vhost[0];
 
         res.render('preview', {
@@ -35,6 +41,8 @@ module.exports = function() {
     });
 
     app.get('/', function (req, res, next) {
+        track.pageView(req);
+
         const themeName = req.vhost[0];
 
         res.render('view', {
@@ -70,6 +78,10 @@ module.exports = function() {
     app.get(['/*', '/view*'], function (req, res, next) {
         const themeName = req.vhost[0];
         const filePath = getFilePath(req);
+
+        // if (filePath === 'index.html') {
+        //     track.pageView(req);
+        // }
 
         const options = {
             root: path.join(appDir, 'pages/' + themeName),

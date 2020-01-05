@@ -1,12 +1,15 @@
 const express = require('express');
 
 const app =  require('./app.js').main;
+const track =  require('./track.js');
 const logger = require('./logger.js');
 const config = require('./config.json');
 
 const routing = function() {
     // Render index.
     app.get('/', function(req, res) {
+        track.pageView(req);
+
         const themes = [
             {
                 "name": "Minimal Viable Startpage",
@@ -89,6 +92,8 @@ const routing = function() {
     /////////////////
 
     app.use(function(req, res, next) {
+        track.pageView(req);
+
         logger.info('404 error: %s', req.originalUrl);
 
         res.status(404).render('error', {
@@ -100,6 +105,8 @@ const routing = function() {
     });
 
     app.use(function(err, req, res, next) {
+        track.pageView(req);
+
         logger.error('500 error: %s', err.stack);
 
         res.status(500).render('error', {

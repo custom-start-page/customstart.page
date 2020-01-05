@@ -19,6 +19,7 @@
     "babel-polyfill": "^6.26.0",
     "bunyan": "^1.8.12",
     "compression": "^1.7.2",
+    "cookie-session": "^1.3.3",
     "cors": "^2.8.5",
     "ejs": "^2.5.8",
     "express": "^4.16.3",
@@ -26,6 +27,7 @@
     "national-geographic-api": "^1.4.0",
     "react-tabs": "^3.1.0",
     "request": "^2.88.0",
+    "universal-analytics": "^0.4.20",
     "vhost": "^3.0.2"
   },
   "devDependencies": {
