@@ -16,7 +16,7 @@ const track = function() {
             const visitor = ua(config.gaId, req.session.userId);
 
             visitor
-                .pageview(req.protocol + '://' + req.headers.host, req.originalUrl)
+                .pageview(req.originalUrl, req.protocol + '://' + req.headers.host)
                 .send();
         }
     };
