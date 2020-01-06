@@ -8,7 +8,7 @@
         "type": "object",
         "title": "Link Group",
         "required": [
-          "category"
+          "name"
         ],
         "properties": {
           "name": {
