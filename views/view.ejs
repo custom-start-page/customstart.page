@@ -1,12 +1,17 @@
 <!--
-    This page is using an iframe so I can display messages to the user if need be.
-    Please don't try to circumvent this. :D
+    This page is using a custom element so I can display messages to the user if need be.
 -->
 <style>
-    iframe {
+    start-page {
         height:100%;
         width:100%;
         flex-grow:1;
     }
 </style>
-<iframe src="/view"></iframe>
+<start-page>
+    <% /*
+        <h1>Hello World</h1>
+        <a href="https://google.co.uk">Click here</a>
+    */ %>
+</start-page>
+<script src="<%- config.fullDomain %>/js/view.min.js"></script>

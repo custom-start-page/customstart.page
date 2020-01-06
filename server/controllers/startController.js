@@ -39,19 +39,19 @@ module.exports = function() {
         });
     });
 
-    app.get('/', function (req, res, next) {
-        track.pageView(req);
+    // app.get('/', function (req, res, next) {
+    //     track.pageView(req);
 
-        const themeName = req.vhost[0];
+    //     const themeName = req.vhost[0];
 
-        res.render('view', {
-            layout: 'common',
-            relativeUrl: '',
-            themeName: themeName,
-            hideFooter: true,
-            noCruft: true,
-        });
-    });
+    //     res.render('view', {
+    //         layout: 'common',
+    //         relativeUrl: '',
+    //         themeName: themeName,
+    //         hideFooter: true,
+    //         noCruft: true,
+    //     });
+    // });
 
     function getFilePath(req) {
         if (req.params[0].length === 0) {
@@ -60,27 +60,27 @@ module.exports = function() {
 
         let filePath = req.params[0];
 
-        if (filePath.startsWith('view') === false) {
-            return filePath;
-        }
+        // if (filePath.startsWith('view') === false) {
+        //     return filePath;
+        // }
 
-        filePath = filePath.substring(5);
+        // filePath = filePath.substring(5);
 
-        if (filePath.length === 0) {
-            return 'index.html';
-        }
+        // if (filePath.length === 0) {
+        //     return 'index.html';
+        // }
 
         return filePath;
     }
 
     // Render startpage.
-    app.get(['/*', '/view*'], function (req, res, next) {
+    app.get(['/*'/*, '/view*'*/], function (req, res, next) {
         const themeName = req.vhost[0];
         const filePath = getFilePath(req);
 
-        // if (filePath === 'index.html') {
-        //     track.pageView(req);
-        // }
+        if (filePath === 'index.html' && req.query.iframe !== 'true') {
+            track.pageView(req);
+        }
 
         const options = {
             root: path.join(global.config.basedir, 'pages/' + themeName),
