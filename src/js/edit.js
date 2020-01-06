@@ -22,8 +22,12 @@ storage.get()
                 onSubmit={submit}
                 // onError={log("errors")}
             >
-                <button type="submit" className="btn btn-success">Save and update</button>
-                <button className="btn btn-warning pull-right" onClick={() => {window.parent.location = '/'}}>Finish preview</button>
+                <footer className="sticky-footer">
+                    <div className="container ">
+                        <button type="submit" className="btn btn-success">Save and update preview</button>
+                        <button className="btn btn-warning pull-right" onClick={() => {window.parent.location = '/'}}>Save and view result</button>
+                    </div>
+                </footer>
             </Form>
         ), document.getElementById("form"));
     });
