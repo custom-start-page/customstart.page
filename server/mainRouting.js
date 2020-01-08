@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 
 const app =  require('./app.js').main;
 const track =  require('./track.js');
@@ -10,69 +11,21 @@ const routing = function() {
     app.get('/', function(req, res) {
         track.pageView(req);
 
-        const themes = [
-            {
-                "name": "Minimal Viable Startpage",
-                "slug": "minimum-viable-startpage",
-                "author": {
-                    "name": "0-Tikaro",
-                    "link": "https://github.com/0-Tikaro/minimum-viable-startpage"
-                }
-            },
-            {
-                "name": "Tilde Enhanced",
-                "slug": "tilde-enhanced",
-                "author": {
-                    "name": "Ozencb",
-                    "link": "https://github.com/Ozencb/tilde-enhanced"
-                }
-            },
-            {
-                "name": "Sui",
-                "slug": "sui",
-                "author": {
-                    "name": "jeroenpardon",
-                    "link": "https://github.com/jeroenpardon/sui/"
-                }
-            },
-            {
-                "name": "Ayrs",
-                "slug": "ayrs",
-                "author": {
-                    "name": "meain",
-                    "link": "https://github.com/meain/startpage"
-                }
-            },
-            {
-                "name": "Distract",
-                "slug": "distract",
-                "author": {
-                    "name": "dotWee",
-                    "link": "https://github.com/dotWee/startpage"
-                }
-            },
-            {
-                "name": "Defaukt",
-                "slug": "defaukt",
-                "author": {
-                    "name": "Harvzor",
-                    "link": "https://github.com/Harvzor/start"
-                }
-            },
-            // {
-            //     "name": "",
-            //     "slug": "",
-            //     "author": {
-            //         "name": "",
-            //         "link": ""
-            //     }
-            // },
-        ];
+        const dirs = fs.readdirSync(global.config.basedir + '/pages');
+
+        const themeManifests = dirs
+            .map(dirPath => global.config.basedir + '/pages/' + dirPath + '/manifest/meta.json')
+            .filter(fullDirPath => fs.existsSync(fullDirPath))
+            .map(fullDirPath => {
+                const json = JSON.parse(fs.readFileSync(fullDirPath));
+
+                return json;
+            });
 
         res.render('index', {
             layout: 'common',
             relativeUrl: '',
-            themes: themes,
+            themes: themeManifests,
         });
     });
 
