@@ -1,0 +1,52 @@
+[https://customstart.page](https://customstart.page)
+
+&#x200B;
+
+Hi r/startpages.
+
+I spent some of my holidays building this MVP. This is a website where I've hosted some of the most popular start pages from this subreddit.
+
+This project tries to solve a problem - **how can start pages be hosted and configured in a unified and friendly way?**
+
+## Current features:
+
+* a gallery of available start pages
+* hosting of start pages
+* using a form, customise the start page to the users needs, information such as:
+   * links
+   * the background image
+   * your name
+   * the rss feed
+
+&#x200B;
+
+## Ideas for the future:
+
+* allow user signup
+* allow users to upload their own start pages
+* allow other users to use uploaded start pages
+* start page rankings and ratings
+
+## Special thanks
+
+Most of the start pages featured come from other users on this subreddit. All of those users provided source code to their start page with an open licence such as MIT or Unlicense. These were mostly start pages which couldn't be configured without looking at some code, but now with my site integration, there's a form which allows for that.
+
+Thank you to:
+
+* [u/Hrafnstrom](https://www.reddit.com/user/Hrafnstrom/) for [tilde enhanced](https://www.reddit.com/r/startpages/comments/ba72tv/tilde_enhanced/)
+* [u/TikaroHD](https://www.reddit.com/user/TikaroHD/) for [minimum viable startup](https://www.reddit.com/r/startpages/comments/al11dz/minimum_viable_setup/)
+* [u/StruckLuck](https://www.reddit.com/user/StruckLuck/) for [sui](https://www.reddit.com/r/startpages/comments/b9m3yc/sui_my_startpage_release/)
+* [u/dnkncht](https://www.reddit.com/user/dnkncht/) for [distract](https://www.reddit.com/r/startpages/comments/cjk83q/im_calling_it_the_irritating_please_go_away_one/)
+* [u/meain](https://www.reddit.com/user/meain/) for [ayrs](https://www.reddit.com/r/startpages/comments/ciwhqa/startpage_with_favs_and_feeds/)
+
+My aim was to avoid editing these pages as much as possible to allow for a quick integration.
+
+## Other pages I'd like to integrate
+
+Some other pages I wanted to include were:
+
+* [jazz](https://www.reddit.com/r/startpages/comments/czksma/ya_like_jazz_minimalism/) by [u/otto251](https://www.reddit.com/user/otto251/)
+* [bios](https://www.reddit.com/r/startpages/comments/61z82s/a_startpage_that_looks_like_bios_screen_with/) by  [u/zicolin](https://www.reddit.com/user/zicolin/)
+* [pixelart](https://www.reddit.com/r/startpages/comments/apb1yy/my_first_attempt_at_a_startpage_randomly_picks/) by  [u/Wolverine1621](https://www.reddit.com/user/Wolverine1621/)
+
+But these start pages either had no source, or the source wasn't provided with an open license.
