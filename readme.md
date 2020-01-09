@@ -14,10 +14,16 @@
 - launchpad.*
 - springboard.*
 
+## Inspiration?
+
+- https://startpages.github.io/
+
 ## Competition
 
 - https://start.me/
 - http://start.io/
+- https://mystartpage.net/
+- https://www.mystart.com/
 
 ### Just a search
 
