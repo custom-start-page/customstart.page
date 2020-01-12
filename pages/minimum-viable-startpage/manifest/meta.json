@@ -5,5 +5,8 @@
         "name": "0-Tikaro",
         "link": "https://github.com/0-Tikaro/minimum-viable-startpage"
     },
-    "preview": "preview.jpg"
+    "preview": "preview.jpg",
+    "features": [
+        "links"
+    ]
 }

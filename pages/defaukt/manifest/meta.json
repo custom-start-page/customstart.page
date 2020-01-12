@@ -5,5 +5,9 @@
         "name": "Harvzor",
         "link": "https://github.com/Harvzor/start"
     },
-    "preview": "preview.jpg"
+    "preview": "preview.jpg",
+    "features": [
+        "background",
+        "links"
+    ]
 }

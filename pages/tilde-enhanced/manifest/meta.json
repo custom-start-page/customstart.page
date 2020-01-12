@@ -5,5 +5,9 @@
         "name": "Ozencb",
         "link": "https://github.com/Ozencb/tilde-enhanced"
     },
-    "preview": "preview.png"
+    "preview": "preview.png",
+    "features": [
+        "clock",
+        "links"
+    ]
 }

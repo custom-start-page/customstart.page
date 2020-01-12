@@ -5,5 +5,10 @@
         "name": "meain",
         "link": "https://github.com/meain/startpage"
     },
-    "preview": "preview.png"
+    "preview": "preview.png",
+    "features": [
+        "clock",
+        "links",
+        "rss feed"
+    ]
 }

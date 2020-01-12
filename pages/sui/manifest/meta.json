@@ -5,5 +5,10 @@
         "name": "jeroenpardon",
         "link": "https://github.com/jeroenpardon/sui/"
     },
-    "preview": "preview.png"
+    "preview": "preview.png",
+    "features": [
+        "date",
+        "links",
+        "search bar"
+    ]
 }

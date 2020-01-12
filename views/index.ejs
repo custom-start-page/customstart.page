@@ -2,13 +2,20 @@
     <p class="text-center">pick a start page and start customising</p>
     <div class="row">
         <% for (let theme of themes) { %>
-            <div class="col-sm-4">
+            <div class="col-lg-4">
                 <div class="panel panel-default">
                     <a href="http://<%= theme.slug %>.<%- config.domain %>:<%- config.port %>/preview">
                         <div class="panel-heading">
                             <h2 class="panel-title"><%= theme.name %></h2>
                         </div>
-                        <img width="100%" src="http://<%= theme.slug %>.<%- config.domain %>:<%- config.port %>/manifest/<%= theme.preview %>" />
+                        <div class="panel-image-container">
+                            <img width="100%" src="http://<%= theme.slug %>.<%- config.domain %>:<%- config.port %>/manifest/<%= theme.preview %>" />
+                            <ul class="pills">
+                                <% theme.features.forEach(feature => { %>
+                                    <li><%= feature %></li>
+                                <% }) %>
+                            </ul>
+                        </div>
                     </a>
                     <div class="panel-footer">
                         by <a href="<%= theme.author.link %>" target="_blank"><%= theme.author.name %></a>
