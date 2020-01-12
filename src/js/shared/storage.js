@@ -1,6 +1,6 @@
-class Storage {
-    constructor(key) {
-        this.key = key;
+class CustomStartStorage {
+    constructor() {
+        this.key = 'customstart-data';
     }
     set(obj) {
         localStorage.setItem(this.key, JSON.stringify(obj));

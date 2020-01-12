@@ -244,7 +244,7 @@ function inject() {
 
 var DATA;
 
-new Storage('data-ayrs').get()
+new CustomStartStorage().get()
   .then(data => {
     DATA = data;
 

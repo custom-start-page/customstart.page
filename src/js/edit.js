@@ -4,7 +4,7 @@
 // import Form from "react-jsonschema-form";
 const Form = JSONSchemaForm.default;
 
-const storage = new Storage('data-' + THEME_NAME);
+const storage = new CustomStartStorage();
 
 const submit = (data) => {
     console.log('submit', data)

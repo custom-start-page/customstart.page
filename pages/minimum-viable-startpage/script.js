@@ -83,7 +83,7 @@ function shortcutListener(e) {
 }
 
 function main(){
-    new Storage('data-minimum-viable-startpage').get()
+    new CustomStartStorage().get()
         .then(DATA => {
             setupBackgroundImage(DATA);
             setupWelcomeMessage(DATA);

@@ -57,7 +57,7 @@ function createCategories(data) {
     }
 }
 
-new Storage('data-distract').get()
+new CustomStartStorage().get()
     .then(data => {
         createCategories(data);
     });

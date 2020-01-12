@@ -1,4 +1,4 @@
-new Storage('data-sui').get()
+new CustomStartStorage().get()
   .then(data => {
     $(document).ready(function(){
       var mysource = $('#links-template').html();

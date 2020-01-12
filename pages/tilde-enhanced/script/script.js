@@ -799,7 +799,7 @@ class Form {
 }
 
 const load = async() => {
-  const DATA = await new Storage('data-tilde-enhanced').get();
+  const DATA = await new CustomStartStorage().get();
 
   console.log(DATA);
 

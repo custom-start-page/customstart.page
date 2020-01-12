@@ -1,4 +1,4 @@
-const storage = new Storage('data-defaukt');
+const storage = new CustomStartStorage();
 
 var StartApp = angular.module('StartApp', []);
 
