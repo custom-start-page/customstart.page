@@ -22,7 +22,7 @@
             "items": {
               "type": "object",
               "title": "Link",
-              "description": "A sigle link to a website which belongs in the parent group",
+              "description": "A single link to a website which belongs in the parent group",
               "required": [
                 "name",
                 "url"
