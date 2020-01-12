@@ -4,12 +4,12 @@
         <% for (let theme of themes) { %>
             <div class="col-lg-4">
                 <div class="panel panel-default">
-                    <a href="http://<%= theme.slug %>.<%- config.domain %>:<%- config.port %>/preview">
+                    <a href="//<%= theme.slug %>.<%- config.domain %>:/preview">
                         <div class="panel-heading">
                             <h2 class="panel-title"><%= theme.name %></h2>
                         </div>
                         <div class="panel-image-container">
-                            <img width="100%" src="http://<%= theme.slug %>.<%- config.domain %>:<%- config.port %>/manifest/<%= theme.preview %>" />
+                            <img width="100%" src="//<%= theme.slug %>.<%- config.domain %>:/manifest/<%= theme.preview %>" />
                             <ul class="pills">
                                 <% theme.features.forEach(feature => { %>
                                     <li><%= feature %></li>
