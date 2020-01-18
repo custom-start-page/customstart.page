@@ -26,6 +26,7 @@ const routing = function() {
             layout: 'common',
             relativeUrl: '',
             themes: themeManifests,
+            metaDescription: 'Choose from a variety of homepage themes and customise it to your needs.',
         });
     });
 

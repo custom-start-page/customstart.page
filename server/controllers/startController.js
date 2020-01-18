@@ -23,6 +23,8 @@ module.exports = function() {
             schema: schema,
             themeName: themeName,
             hideFooter: hideFooter,
+            metaDescription: `Edit the ${themeName} startpage.`,
+            noindex: true,
         });
     });
 
@@ -36,6 +38,7 @@ module.exports = function() {
             relativeUrl: '',
             themeName: themeName,
             hideFooter: false,
+            metaDescription: `Preview and edit the "${themeName}" startpage.`,
         });
     });
 
