@@ -55,6 +55,7 @@ const routing = function() {
             relativeUrl: '404',
             pageTitle: 'Status: 404',
             bodyText: '<p>You\'re looking for a page that doesn\'t exist...</p>',
+            metaDescription: "This page doesn't seem to exist.",
         });
     });
 
@@ -68,6 +69,7 @@ const routing = function() {
             relativeUrl: '500',
             pageTitle: 'Status: 500',
             bodyText: '<p>So sorry, but a problem occured! Please email me if this problem persists.</p>',
+            metaDescription: "This page has errored.",
         });
     });
 }();
