@@ -3,6 +3,7 @@
     "name": "Home",
     "pageTitle": "",
     "pageGroup": "",
+    "bodyText": "index.md",
     "metaDescription": "Choose from a variety of homepage themes and customise it to your needs.",
     "controller": "index"
 }
