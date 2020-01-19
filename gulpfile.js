@@ -76,8 +76,8 @@ const scripts = function(cb) {
 const start = function(cb) {
     nodemon({
         script: 'server.js',
-        ext: 'js',
-        watch: ['server/*', 'server.js']
+        ext: 'js,md,json',
+        watch: ['server/*', 'server.js', 'data/*']
     });
 
     cb();
