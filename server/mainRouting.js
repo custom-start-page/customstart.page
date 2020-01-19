@@ -4,6 +4,7 @@ const fs = require('fs');
 const app =  require('./app.js').main;
 const track =  require('./track.js');
 const logger = require('./logger.js');
+const data = require('./data.js');
 const config = require('./config.json');
 
 const routing = function() {
@@ -30,6 +31,20 @@ const routing = function() {
         });
     });
 
+    app.get('/how-to-set-my-startpage', function(req, res) {
+        track.pageView(req);
+
+        const page = data.getPage('/how-to-set-my-startpage');
+
+        res.render(page.controller, {
+            layout: 'common',
+            relativeUrl: '',
+            metaDescription: page.metaDescription,
+            pageTitle: page.pageTitle,
+            bodyText: page.bodyText,
+        });
+    });
+
     require('./controllers/startController.js')();
 
     /////////////////
@@ -50,7 +65,7 @@ const routing = function() {
 
         logger.info('404 error: %s', req.originalUrl);
 
-        res.status(404).render('error', {
+        res.status(404).render('page', {
             layout: 'common',
             relativeUrl: '404',
             pageTitle: 'Status: 404',
@@ -64,7 +79,7 @@ const routing = function() {
 
         logger.error('500 error: %s', err.stack);
 
-        res.status(500).render('error', {
+        res.status(500).render('page', {
             layout: 'common',
             relativeUrl: '500',
             pageTitle: 'Status: 500',
