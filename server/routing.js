@@ -1,5 +1,4 @@
 const express = require('express');
-const fs = require('fs');
 
 const app =  require('./app.js').main;
 const track =  require('./track.js');
@@ -7,50 +6,46 @@ const logger = require('./logger.js');
 const data = require('./data.js');
 const config = require('./config.json');
 
+const setupController = (page) => {
+    try {
+        require('./controllers/' + page.controller + 'Controller.js')(page);
+    } catch (e) {
+        logger.error('Failed to render page with name: ' + page.name, e);
+    }
+};
+
+const setupControllers = (obj) => {
+    for (let key of Object.keys(obj)) {
+        var page = obj[key];
+
+        /*
+            if (!helpers.isObject(page)) {
+                continue;
+            }
+        */
+
+        if (typeof page.controller !== 'undefined') {
+            setupController(page);
+        }
+
+        if (typeof page.children !== 'undefined' && page.children.length > 0) {
+            setupControllers(page.children);
+        }
+    }
+};
+
 const routing = function() {
-    // Render index.
-    app.get('/', function(req, res) {
-        track.pageView(req);
-
-        const dirs = fs.readdirSync(global.config.basedir + '/pages');
-
-        const themeManifests = dirs
-            .map(dirPath => global.config.basedir + '/pages/' + dirPath + '/manifest/meta.json')
-            .filter(fullDirPath => fs.existsSync(fullDirPath))
-            .map(fullDirPath => {
-                const json = JSON.parse(fs.readFileSync(fullDirPath));
-
-                return json;
-            });
-
-        res.render('index', {
-            layout: 'common',
-            relativeUrl: '',
-            themes: themeManifests,
-            metaDescription: 'Choose from a variety of homepage themes and customise it to your needs.',
-        });
-    });
-
-    app.get('/how-to-set-my-startpage', function(req, res) {
-        track.pageView(req);
-
-        const page = data.getPage('/how-to-set-my-startpage');
-
-        res.render(page.controller, {
-            layout: 'common',
-            relativeUrl: '',
-            metaDescription: page.metaDescription,
-            pageTitle: page.pageTitle,
-            bodyText: page.bodyText,
-        });
-    });
+    setupControllers(data());
 
     require('./controllers/startController.js')();
 
     /////////////////
-    // Static
+    // Static files
     /////////////////
     app.use(express.static('./public'));
+
+    // Just used for verifying SSL with Let's Encrypt.
+    app.use('/.well-known', express.static('./.well-known'));
 
     if (config.dev == true) {
         app.use(express.static('./src'));

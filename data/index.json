@@ -1,0 +1,8 @@
+{
+    "path": "/",
+    "name": "Home",
+    "pageTitle": "",
+    "pageGroup": "",
+    "metaDescription": "Choose from a variety of homepage themes and customise it to your needs.",
+    "controller": "index"
+}

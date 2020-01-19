@@ -11,7 +11,7 @@ global.config.basedir = __dirname;
 // Custom modules
 const logger = require('./server/logger.js');
 const app = require('./server/app.js').app;
-require('./server/mainRouting.js');
+require('./server/routing.js');
 
 logger.info(global.config);
 
