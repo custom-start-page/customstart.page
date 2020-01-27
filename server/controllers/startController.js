@@ -15,12 +15,9 @@ module.exports = function() {
         const themeName = req.vhost[0];
         const hideFooter = req.query.hideFooter == 'true' || false;
 
-        const schema = fs.readFileSync('./pages/' + themeName + '/manifest/schema.json', 'utf8');
-
         res.render('edit', {
             layout: 'common',
             relativeUrl: '',
-            schema: schema,
             hideFooter: hideFooter,
             metaDescription: `Edit the ${themeName} startpage.`,
             noindex: true,
