@@ -72,21 +72,40 @@ module.exports = function() {
         return filePath;
     }
 
-    app.get('/api/meta', function (req, res, next) {
+    app.get('/api/meta', function (req, res) {
         const themeName = req.vhost[0];
         const meta = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/meta.json', 'utf8'));
 
         res.json(meta);
     });
 
-    app.get('/api/data', function (req, res, next) {
+    app.get('/api/data', function (req, res) {
         const themeName = req.vhost[0];
-        const data = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/defaultData.json', 'utf8'));
 
-        res.json(data);
+        if (!req.session.userId) {
+            const data = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/defaultData.json', 'utf8'));
+
+            res.json(data);
+        } else {
+            const data = JSON.parse(fs.readFileSync(`./user-data/${req.session.userId}.json`, 'utf8'));
+
+            res.json(data);
+        }
     });
 
-    app.get('/api/schema', function (req, res, next) {
+    app.post('/api/data', function (req, res) {
+        if (!req.session.userId) {
+            return;
+        }
+
+        fs.writeFile(`./user-data/${req.session.userId}.json`, JSON.stringify(req.body, null, 4));
+
+        res.send({
+            message: 'Saved!'
+        });
+    });
+
+    app.get('/api/schema', function (req, res) {
         const themeName = req.vhost[0];
         const schema = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/schema.json', 'utf8'));
 

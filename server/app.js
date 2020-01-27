@@ -7,6 +7,7 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const compression = require('compression');
 const cors = require('cors');
+const bodyParser = require('body-parser')
 const logger = require('./logger.js');
 
 var app = express();
@@ -38,6 +39,11 @@ var startApp = express();
 
 app.use(vhost(config.domain, mainApp));
 app.use(vhost('*.' + config.domain, startApp));
+
+// Parse application/x-www-form-urlencoded
+startApp.use(bodyParser.urlencoded({ extended: false }))
+// Parse application/json
+startApp.use(bodyParser.json())
 
 mainApp.use(compression());
 startApp.use(compression());
