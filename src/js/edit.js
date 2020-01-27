@@ -6,6 +6,15 @@ const Form = JSONSchemaForm.default;
 
 const storage = new CustomStartStorage();
 
+async function getSchema() {
+    return await fetch('/api/schema')
+        .then(res => res.json())
+        .then(out => {
+            return out;
+        })
+        .catch(err => { throw err });
+}
+
 const submit = (data) => {
     console.log('submit', data)
 
@@ -20,24 +29,31 @@ const del = () => {
     window.parent.reloadPreview();
 };
 
-storage.get()
-    .then(formData => {
-        ReactDOM.render((
-            <Form
-                schema={SCHEMA}
-                formData={formData}
-                // onChange={log("changed")}
-                onSubmit={submit}
-                // onError={log("errors")}
-            >
-                <footer className="sticky-footer">
-                    <div className="container ">
-                        <button className="btn btn-success">Save and update preview</button>
-                        <button className="btn btn-warning pull-right" onClick={() => {window.parent.location = '/'}}>Save and view result</button>
-                        {/* <button className="btn btn-warning pull-right" onClick={() => { formData = {}; }}>Clear data</button>
-                        <button className="btn btn-warning pull-right" onClick={() => del({})}>Reset to default</button> */}
-                    </div>
-                </footer>
-            </Form>
-        ), document.getElementById("form"));
-    });
+async function render() {
+    const formDataPromise = storage.get();
+    const schemaPromise = getSchema();
+
+    const formData = await formDataPromise;
+    const schema = await schemaPromise;
+
+    ReactDOM.render((
+        <Form
+            schema={schema}
+            formData={formData}
+            // onChange={log("changed")}
+            onSubmit={submit}
+            // onError={log("errors")}
+        >
+            <footer className="sticky-footer">
+                <div className="container ">
+                    <button className="btn btn-success">Save and update preview</button>
+                    <button className="btn btn-warning pull-right" onClick={() => {window.parent.location = '/'}}>Save and view result</button>
+                    {/* <button className="btn btn-warning pull-right" onClick={() => { formData = {}; }}>Clear data</button>
+                    <button className="btn btn-warning pull-right" onClick={() => del({})}>Reset to default</button> */}
+                </div>
+            </footer>
+        </Form>
+    ), document.getElementById("form"));
+}
+
+render();

@@ -21,7 +21,6 @@ module.exports = function() {
             layout: 'common',
             relativeUrl: '',
             schema: schema,
-            themeName: themeName,
             hideFooter: hideFooter,
             metaDescription: `Edit the ${themeName} startpage.`,
             noindex: true,
@@ -75,6 +74,27 @@ module.exports = function() {
 
         return filePath;
     }
+
+    app.get('/api/meta', function (req, res, next) {
+        const themeName = req.vhost[0];
+        const meta = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/meta.json', 'utf8'));
+
+        res.json(meta);
+    });
+
+    app.get('/api/data', function (req, res, next) {
+        const themeName = req.vhost[0];
+        const data = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/defaultData.json', 'utf8'));
+
+        res.json(data);
+    });
+
+    app.get('/api/schema', function (req, res, next) {
+        const themeName = req.vhost[0];
+        const schema = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/schema.json', 'utf8'));
+
+        res.json(schema);
+    });
 
     // Render startpage.
     app.get(['/*'/*, '/view*'*/], function (req, res, next) {

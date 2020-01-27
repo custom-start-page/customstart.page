@@ -9,7 +9,7 @@ class CustomStartStorage {
         localStorage.delete(this.key);
     }
     async getDefault() {
-        return await fetch('/manifest/defaultData.json')
+        return await fetch('/api/data')
             .then(res => res.json())
             .then(out => {
                 return out;
