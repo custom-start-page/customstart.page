@@ -81,13 +81,14 @@ module.exports = function() {
 
     app.get('/api/data', function (req, res) {
         const themeName = req.vhost[0];
+        const userDataLocation = `./user-data/${req.session.userId}.json`;
 
-        if (!req.session.userId) {
+        if (req.session.userId === false || fs.existsSync(userDataLocation) === false) {
             const data = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/defaultData.json', 'utf8'));
 
             res.json(data);
         } else {
-            const data = JSON.parse(fs.readFileSync(`./user-data/${req.session.userId}.json`, 'utf8'));
+            const data = JSON.parse(fs.readFileSync(userDataLocation, 'utf8'));
 
             res.json(data);
         }
