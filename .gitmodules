@@ -1,0 +1,3 @@
+[submodule "pages/ayrs"]
+	path = pages/ayrs
+	url = https://github.com/custom-start-page/ayrs.git
