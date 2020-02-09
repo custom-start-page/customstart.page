@@ -4,3 +4,6 @@
 [submodule "pages/apollo"]
 	path = pages/apollo
 	url = https://github.com/custom-start-page/apollo.git
+[submodule "pages/defaukt"]
+	path = pages/defaukt
+	url = https://github.com/custom-start-page/defaukt.git
