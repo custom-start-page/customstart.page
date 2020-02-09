@@ -10,3 +10,6 @@
 [submodule "pages/distract"]
 	path = pages/distract
 	url = https://github.com/custom-start-page/distract.git
+[submodule "pages/minimum-viable-startpage"]
+	path = pages/minimum-viable-startpage
+	url = https://github.com/custom-start-page/minimum-viable-startpage.git
