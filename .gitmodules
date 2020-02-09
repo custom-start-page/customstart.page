@@ -16,3 +16,6 @@
 [submodule "pages/sui"]
 	path = pages/sui
 	url = https://github.com/custom-start-page/sui.git
+[submodule "pages/tilde-enhanced"]
+	path = pages/tilde-enhanced
+	url = https://github.com/custom-start-page/tilde-enhanced.git
