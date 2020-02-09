@@ -1,3 +1,6 @@
 [submodule "pages/ayrs"]
 	path = pages/ayrs
 	url = https://github.com/custom-start-page/ayrs.git
+[submodule "pages/apollo"]
+	path = pages/apollo
+	url = https://github.com/custom-start-page/apollo.git
