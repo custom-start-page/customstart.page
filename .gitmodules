@@ -22,3 +22,6 @@
 [submodule "pages/jazz"]
 	path = pages/jazz
 	url = https://github.com/custom-start-page/jazz.git
+[submodule "pages/retro-crt-startpage"]
+	path = pages/retro-crt-startpage
+	url = https://github.com/custom-start-page/retro-crt-startpage.git
