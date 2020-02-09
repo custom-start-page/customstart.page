@@ -144,6 +144,7 @@ module.exports = function() {
     // Render startpage.
     app.get(['/*'/*, '/view*'*/], function (req, res, next) {
         const themeName = req.vhost[0];
+        const meta = new Theme(themeName).getMeta();
         const filePath = getFilePath(req);
 
         if (filePath === 'index.html' && req.query.iframe !== 'true') {
@@ -151,7 +152,7 @@ module.exports = function() {
         }
 
         const options = {
-            root: path.join(global.config.basedir, 'pages/' + themeName),
+            root: path.join(global.config.basedir, 'pages/' + themeName, meta.outputDir || ''),
             dotfiles: 'deny',
             headers: {
                 'x-timestamp': Date.now(),
