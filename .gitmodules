@@ -19,3 +19,6 @@
 [submodule "pages/tilde-enhanced"]
 	path = pages/tilde-enhanced
 	url = https://github.com/custom-start-page/tilde-enhanced.git
+[submodule "pages/jazz"]
+	path = pages/jazz
+	url = https://github.com/custom-start-page/jazz.git
