@@ -13,3 +13,6 @@
 [submodule "pages/minimum-viable-startpage"]
 	path = pages/minimum-viable-startpage
 	url = https://github.com/custom-start-page/minimum-viable-startpage.git
+[submodule "pages/sui"]
+	path = pages/sui
+	url = https://github.com/custom-start-page/sui.git
