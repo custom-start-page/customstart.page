@@ -6,6 +6,34 @@ const logger = require('../logger.js');
 const track =  require('../track.js');
 const app = require('../app').start;
 
+class Theme {
+    constructor(themeName) {
+        this.themeName = themeName;
+
+        if (this.themeExists() === false) {
+            throw "Theme does not exist.";
+        }
+    }
+    themeExists() {
+        return fs.existsSync('./pages/' + this.themeName);
+    }
+    getMeta() {
+        const meta = JSON.parse(fs.readFileSync('./pages/' + this.themeName + '/manifest/meta.json', 'utf8'));
+
+        return meta;
+    }
+    getSchema() {
+        const schema = JSON.parse(fs.readFileSync('./pages/' + this.themeName + '/manifest/schema.json', 'utf8'));
+
+        return schema;
+    }
+    getDefaultdata() {
+        const data = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/defaultData.json', 'utf8'));
+
+        return data;
+    }
+}
+
 module.exports = function() {
     app.use('/js/shared/',  express.static('./public/js/shared/'));
 
@@ -74,7 +102,7 @@ module.exports = function() {
 
     app.get('/api/meta', function (req, res) {
         const themeName = req.vhost[0];
-        const meta = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/meta.json', 'utf8'));
+        const meta = new Theme(themeName).getMeta();
 
         res.json(meta);
     });
@@ -84,9 +112,9 @@ module.exports = function() {
         const userDataLocation = `./user-data/${req.session.userId}.json`;
 
         if (req.session.userId === false || fs.existsSync(userDataLocation) === false) {
-            const data = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/defaultData.json', 'utf8'));
+            const defaultData = new Theme(themeName).getDefaultdata();
 
-            res.json(data);
+            res.json(defaultData);
         } else {
             const data = JSON.parse(fs.readFileSync(userDataLocation, 'utf8'));
 
@@ -108,7 +136,7 @@ module.exports = function() {
 
     app.get('/api/schema', function (req, res) {
         const themeName = req.vhost[0];
-        const schema = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/schema.json', 'utf8'));
+        const schema = new Theme(themeName).getSchema();
 
         res.json(schema);
     });
