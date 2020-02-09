@@ -7,3 +7,6 @@
 [submodule "pages/defaukt"]
 	path = pages/defaukt
 	url = https://github.com/custom-start-page/defaukt.git
+[submodule "pages/distract"]
+	path = pages/distract
+	url = https://github.com/custom-start-page/distract.git
