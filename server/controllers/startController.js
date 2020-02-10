@@ -28,7 +28,7 @@ class Theme {
         return schema;
     }
     getDefaultdata() {
-        const data = JSON.parse(fs.readFileSync('./pages/' + themeName + '/manifest/defaultData.json', 'utf8'));
+        const data = JSON.parse(fs.readFileSync('./pages/' + this.themeName + '/manifest/defaultData.json', 'utf8'));
 
         return data;
     }
