@@ -152,7 +152,14 @@ module.exports = function() {
         }
 
         const options = {
-            root: path.join(global.config.basedir, 'pages/' + themeName, meta.outputDir || ''),
+            root: path.join(
+                global.config.basedir,
+                'pages/' + themeName,
+                // Dirty hack, should fix:
+                filePath === 'preview.jpg' || filePath === 'preview.png'
+                    ? (meta.outputDir || '')
+                    : ''
+            ),
             dotfiles: 'deny',
             headers: {
                 'x-timestamp': Date.now(),
