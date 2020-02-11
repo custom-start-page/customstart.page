@@ -1,7 +1,15 @@
-// const iframe = document.querySelector('iframe');
+customElements.define('start-page', class extends HTMLElement {
+    constructor() {
+        super();
 
-// iframe
-//     .addEventListener('load', (event) => {
-//         console.log(event);
-//         console.log(iframe.contentWindow.location.href)
-//     });
+        fetch('/index.html')
+            .then(res => res.text())
+            .then(text => {
+                console.log(text);
+                shadowRoot.innerHTML = text;
+            });
+
+        const shadowRoot = this.attachShadow({mode: 'open'});
+        // shadowRoot.innerHTML = this.innerHTML;
+    }
+});

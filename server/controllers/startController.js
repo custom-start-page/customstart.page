@@ -87,17 +87,17 @@ module.exports = function() {
 
         let filePath = req.params[0];
 
-        if (filePath.startsWith('view') === false) {
-            return filePath;
-        }
+        // if (filePath.startsWith('view') === false) {
+        //     return filePath;
+        // }
 
-        filePath = filePath.substring(5);
+        // filePath = filePath.substring(5);
 
-        if (filePath.length === 0) {
-            return 'index.html';
-        }
+        // if (filePath.length === 0) {
+        //     return 'index.html';
+        // }
 
-        // return filePath;
+        return filePath;
     }
 
     app.get('/api/meta', function (req, res) {
@@ -141,41 +141,24 @@ module.exports = function() {
         res.json(schema);
     });
 
-    app.get('/', function (req, res, next) {
-        track.pageView(req);
-
-        const themeName = req.vhost[0];
-
-        res.render('view', {
-            layout: 'common',
-            relativeUrl: '',
-            hideFooter: true,
-            noCruft: true,
-            metaDescription: `Preview and edit the "${themeName}" startpage.`,
-        });
-    });
-
     // Render startpage.
-    app.get(['/*', '/view*'], function (req, res, next) {
+    app.get(['/*'/*, '/view*'*/], function (req, res, next) {
         const themeName = req.vhost[0];
         const meta = new Theme(themeName).getMeta();
         const filePath = getFilePath(req);
 
-        // if (filePath === 'index.html' && req.query.iframe !== 'true') {
-        //     track.pageView(req);
-        // }
-
-        // Dirty hack, should fix:
-        const outputDir =
-            filePath === 'manifest/preview.jpg' || filePath === 'manifest/preview.png'
-                ? ''
-                : (meta.outputDir || '');
+        if (filePath === 'index.html' && req.query.iframe !== 'true') {
+            track.pageView(req);
+        }
 
         const options = {
             root: path.join(
                 global.config.basedir,
                 'pages/' + themeName,
-                outputDir
+                // Dirty hack, should fix:
+                filePath === 'preview.jpg' || filePath === 'preview.png'
+                    ? (meta.outputDir || '')
+                    : ''
             ),
             dotfiles: 'deny',
             headers: {
