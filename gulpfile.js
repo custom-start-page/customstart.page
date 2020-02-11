@@ -92,4 +92,5 @@ const watch = function(cb) {
 };
 
 exports.scripts = scripts;
+exports.watch = watch;
 exports.default = gulp.parallel(styles, scripts, start, watch);
