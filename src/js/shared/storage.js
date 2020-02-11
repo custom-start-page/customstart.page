@@ -46,3 +46,21 @@ class CustomStartStorage {
             .catch(err => { throw err });
     }
 }
+
+function inIframe () {
+    try {
+        return window.self !== window.top;
+    } catch (e) {
+        return true;
+    }
+}
+
+if (inIframe()) {
+    // Make all anchors target the top window
+    // https://stackoverflow.com/a/24428525
+    const base = document.createElement('base');
+    base.setAttribute('target', '_top');
+
+    document.querySelector('head')
+        .appendChild(base)
+}

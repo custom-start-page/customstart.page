@@ -2,16 +2,10 @@
     This page is using a custom element so I can display messages to the user if need be.
 -->
 <style>
-    start-page {
+    iframe {
         height:100%;
         width:100%;
         flex-grow:1;
     }
 </style>
-<start-page>
-    <% /*
-        <h1>Hello World</h1>
-        <a href="https://google.co.uk">Click here</a>
-    */ %>
-</start-page>
-<script src="<%- config.fullDomain %>/js/view.min.js"></script>
+<iframe src="/view"></iframe>

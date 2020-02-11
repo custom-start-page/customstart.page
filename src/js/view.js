@@ -1,15 +1,7 @@
-customElements.define('start-page', class extends HTMLElement {
-    constructor() {
-        super();
+// const iframe = document.querySelector('iframe');
 
-        fetch('/index.html')
-            .then(res => res.text())
-            .then(text => {
-                console.log(text);
-                shadowRoot.innerHTML = text;
-            });
-
-        const shadowRoot = this.attachShadow({mode: 'open'});
-        // shadowRoot.innerHTML = this.innerHTML;
-    }
-});
+// iframe
+//     .addEventListener('load', (event) => {
+//         console.log(event);
+//         console.log(iframe.contentWindow.location.href)
+//     });
