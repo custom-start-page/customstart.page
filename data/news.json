@@ -1,0 +1,9 @@
+{
+    "path": "/news",
+    "name": "News",
+    "pageTitle": "News",
+    "pageGroup": "",
+    "bodyText": "news.md",
+    "metaDescription": "See the latest updates for Custom Start Page.",
+    "controller": "page"
+}

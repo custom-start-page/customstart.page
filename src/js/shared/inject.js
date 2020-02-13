@@ -3,71 +3,39 @@ class Modal extends HTMLElement {
         super();
         this._modalVisible = false;
         this._modal;
+        this._iframe;
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
         <style>
-            /* The Modal (background) */
-            .modal {
-                display: none;
-                position: fixed;
-                z-index: 1;
-                padding-top: 100px;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                overflow: auto;
-                background-color: rgba(0,0,0,0.4);
-            }
+            /* Icons from https://css.gg */
 
-            /* Modal Content */
-            .modal-content {
+            .gg-close {
+                box-sizing: border-box;
                 position: relative;
-                background-color: #fefefe;
-                margin: auto;
-                padding: 0;
-                border: 1px solid #888;
-                width: 80%;
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-                -webkit-animation-name: animatetop;
-                -webkit-animation-duration: 0.4s;
-                animation-name: animatetop;
-                animation-duration: 0.4s
+                display: block;
+                transform: scale(var(--ggs,1));
+                width: 22px;
+                height: 22px;
+                border: 2px solid transparent;
+                border-radius: 40px
             }
-
-            /* Add Animation */
-            @-webkit-keyframes animatetop {
-                from {top:-300px; opacity:0}
-                to {top:0; opacity:1}
+            .gg-close::after,
+            .gg-close::before {
+                content: "";
+                display: block;
+                box-sizing: border-box;
+                position: absolute;
+                width: 16px;
+                height: 2px;
+                background: currentColor;
+                transform: rotate(45deg);
+                border-radius: 5px;
+                top: 8px;
+                left: 1px
             }
-
-            @keyframes animatetop {
-                from {top:-300px; opacity:0}
-                to {top:0; opacity:1}
+            .gg-close::after {
+                transform: rotate(-45deg)
             }
-
-            /* The Close Button */
-            .close {
-                color: white;
-                float: right;
-                font-size: 28px;
-                font-weight: bold;
-            }
-
-            .close:hover,
-            .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-            }
-
-            .modal-header {
-            padding: 2px 16px;
-            background-color: #000066;
-            color: white;
-            }
-
-            .modal-body {padding: 2px 16px; margin: 20px 2px}
 
             .gg-bell, .gg-bell::before {
                 border-top-left-radius: 100px;
@@ -112,6 +80,71 @@ class Modal extends HTMLElement {
                 border-bottom-right-radius: 100px
             }
 
+            .modal-background {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                padding-top: 100px;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0,0,0,0.4);
+            }
+
+            .modal-content {
+                position: relative;
+                background-color: #fefefe;
+                margin: auto;
+                padding: 0;
+                border: 1px solid #888;
+                width: 80%;
+                height: 80%;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+                -webkit-animation-name: animatetop;
+                -webkit-animation-duration: 0.4s;
+                animation-name: animatetop;
+                animation-duration: 0.4s
+            }
+
+            iframe {
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+
+            /* Add Animation */
+            @-webkit-keyframes animatetop {
+                from {top:-300px; opacity:0}
+                to {top:0; opacity:1}
+            }
+
+            @keyframes animatetop {
+                from {top:-300px; opacity:0}
+                to {top:0; opacity:1}
+            }
+
+            .close {
+                color: white;
+                float: right;
+                --ggs: 2;
+                margin: 20px;
+            }
+
+            .close:hover, .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .modal-header {
+                padding: 2px;
+                background-color: #326cf2;
+                color: white;
+                overflow: hidden;
+            }
+
             .button-container {
                 position: fixed;
                 right: 0;
@@ -149,21 +182,19 @@ class Modal extends HTMLElement {
                 </span>
             </button>
         </div>
-        <div class="modal">
+        <div class="modal-background">
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="close">&times;</span>
-                    <slot name="header"><h1>Default text</h1></slot>
+                    <i class="close gg-close"></i>
                 </div>
-                <div class="modal-body">
-                    <slot><slot>
-                </div>
+                <iframe></iframe>
             </div>
         </div>
         `
     }
     connectedCallback() {
-        this._modal = this.shadowRoot.querySelector(".modal");
+        this._iframe = this.shadowRoot.querySelector("iframe");
+        this._modal = this.shadowRoot.querySelector(".modal-background");
         this.shadowRoot.querySelector("button").addEventListener('click', this._showModal.bind(this));
         this.shadowRoot.querySelector(".close").addEventListener('click', this._hideModal.bind(this));
     }
@@ -171,9 +202,19 @@ class Modal extends HTMLElement {
         this.shadowRoot.querySelector("button").removeEventListener('click', this._showModal);
         this.shadowRoot.querySelector(".close").removeEventListener('click', this._hideModal);
     }
+    _getDomainName() {
+        const hostName = window.location.hostname;
+
+        return hostName.substring(hostName.lastIndexOf(".", hostName.lastIndexOf(".") - 1) + 1);
+    }
+    _loadIframe() {
+        this._iframe.src = '//' + this._getDomainName() + '/news';
+    }
     _showModal() {
         this._modalVisible = true;
         this._modal.style.display = 'block';
+
+        this._loadIframe();
     }
     _hideModal() {
         this._modalVisible = false;
@@ -181,21 +222,15 @@ class Modal extends HTMLElement {
     }
 }
 
-customElements.define('pp-modal', Modal);
+customElements.define('custom-start-page-modal', Modal);
 
-class Message {
-    constructor(header, message) {
-        this.header = header;
-        this.message = message;
-    }
+class Notification {
     show() {
-        const modal = document.createElement('pp-modal');
-        modal.innerHTML = `<h1 slot="header">${this.header}</h1>${this.message}`;
+        const modal = document.createElement('custom-start-page-modal');
 
         document.querySelector('body')
             .appendChild(modal);
     }
 }
 
-new Message("News!", `<p>Good news!</p>`)
-    .show();
+new Notification().show();
