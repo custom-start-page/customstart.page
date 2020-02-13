@@ -5,7 +5,7 @@ logs
 
 public/css/main.css
 public/css/main.css.map
-public/js/*.min.js
-public/js/*.min.js.map
+public/js/**/*.min.js
+public/js/**/*.min.js.map
 
 *~
