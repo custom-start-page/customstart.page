@@ -142,7 +142,21 @@ module.exports = function() {
     });
 
     // Render startpage.
-    app.get(['/*'/*, '/view*'*/], function (req, res, next) {
+    app.get('/', function (req, res, next) {
+        const themeName = req.vhost[0];
+        const meta = new Theme(themeName).getMeta();
+
+        track.pageView(req);
+
+        const html = fs.readFileSync(global.config.basedir + '/pages/' + themeName + '/index.html');
+
+        res.write(html);
+        // Dirty inject.
+        res.write(`<script src="/js/shared/inject.min.js"></script>`);
+        res.end();
+    });
+
+    app.get('/*', function (req, res, next) {
         const themeName = req.vhost[0];
         const meta = new Theme(themeName).getMeta();
         const filePath = getFilePath(req);

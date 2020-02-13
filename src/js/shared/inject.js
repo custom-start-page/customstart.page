@@ -69,40 +69,86 @@ class Modal extends HTMLElement {
 
             .modal-body {padding: 2px 16px; margin: 20px 2px}
 
-            // button {
-            //     position: absolute;
-            //     bottom: 50px;
-            //     right: 50px;
-            //     width: 50px;
-            //     height: 50px;
-            //     background-color: red;
-            //     border-radius: 50%;
-            //     border: 0;
-            // }
+            .gg-bell, .gg-bell::before {
+                border-top-left-radius: 100px;
+                border-top-right-radius: 100px
+            }
+            .gg-bell {
+                box-sizing: border-box;
+                position: relative;
+                display: block;
+                transform: scale(var(--ggs,1));
+                border: 2px solid;
+                border-bottom: 0;
+                width: 14px;
+                height: 14px
+            }
+            .gg-bell::after,
+            .gg-bell::before {
+                content: "";
+                display: block;
+                box-sizing: border-box;
+                position: absolute
+            }
+            .gg-bell::before {
+                background: currentColor;
+                width: 4px;
+                height: 4px;
+                top: -4px;
+                left: 3px
+            }
+            .gg-bell::after {
+                border-radius: 3px;
+                width: 16px;
+                height: 10px;
+                border: 6px solid transparent;
+                border-top: 1px solid transparent;
+                box-shadow:
+                    inset 0 0 0 4px,
+                    0 -2px 0 0;
+                top: 14px;
+                left: -3px;
+                border-bottom-left-radius: 100px;
+                border-bottom-right-radius: 100px
+            }
+
+            .button-container {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                width: 100px;
+                height: 100px;
+                overflow: hidden;
+            }
 
             button {
                 position: absolute;
-                will-change: box-shadow;
-                text-decoration: none;
-                text-align: center;
-                line-height: 50px;
-                border-radius: 50%;
-                font-size: 24px;
-                height: 50px;
-                width: 50px;
-                bottom: 50px;
-                right: 50px;
-                padding: 0;
-                overflow: hidden;
-                background: rgb(63, 81, 181);
-                box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12),0 1px 1px 0
-                rgba(0,0,0,.24);
-                border: none;
+                right: 0;
+                bottom: 0;
+                background-color: #326cf2;
+                width: 100%;
+                height: 100%;
+                border: 0;
+                transform: rotate(45deg) translate(70%, 0);
+                box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12),0 1px 1px 0;
                 cursor: pointer;
+            }
+
+            .button-inner {
+                transform: rotate(-45deg);
+                position: absolute;
+                top: 45px;
+                left: 10px;
                 color: white;
             }
         </style>
-        <button>&plus;</button>
+        <div class="button-container">
+            <button>
+                <span class="button-inner">
+                    <i class="gg-bell"></i>
+                </span>
+            </button>
+        </div>
         <div class="modal">
             <div class="modal-content">
                 <div class="modal-header">
