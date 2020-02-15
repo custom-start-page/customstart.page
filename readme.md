@@ -6,11 +6,11 @@
 
 ### Homepage
 
-![Homepage](/assets/2020-01-12/index.jpg)
+![Homepage](/.github/assets/2020-01-12/index.jpg)
 
 ### Edit page
 
-![Edit](/assets/2020-01-12/edit.png)
+![Edit](/.github/assets/2020-01-12/edit.png)
 
 ## Domain ideas
 
