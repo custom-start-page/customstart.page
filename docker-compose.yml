@@ -1,0 +1,9 @@
+version: "3.4"
+
+services:
+  custom-start-page:
+    build:
+      context: .
+      target: runtime
+    ports:
+      - "80:80"

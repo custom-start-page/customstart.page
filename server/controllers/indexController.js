@@ -10,7 +10,9 @@ module.exports = function(page) {
     app.get('/', function(req, res) {
         track.pageView(req);
 
-        const dirs = fs.readdirSync(global.config.basedir + '/pages');
+        const dirs = fs.existsSync(global.config.basedir + '/pages')
+            ? fs.readdirSync(global.config.basedir + '/pages')
+            : [];
 
         const themeManifests = dirs
             .map(dirPath => global.config.basedir + '/pages/' + dirPath + '/manifest/meta.json')

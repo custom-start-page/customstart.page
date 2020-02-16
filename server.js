@@ -16,24 +16,16 @@ require('./server/routing.js');
 logger.info(global.config);
 
 /////////////////
-// Functions
-/////////////////
-
-Array.prototype.filterObjects = function(key, value) {
-    return this.filter(function(x) { return x[key] === value; })
-};
-
-/////////////////
 // Inititialise
 /////////////////
 
 if (config.type === 'node') {
     // Used for Node server.
-    var server = app.listen(config.port, config.ip, function () {
-        var host = server.address().address;
-        var port = server.address().port;
+    var server = app.listen(config.port, function () {
+        const host = server.address().address;
+        const port = server.address().port;
 
-        logger.info('Website listening at http://%s:%s.', host, port);
+        logger.info(`Website listening at http://${host}:${port}.`);
     });
 } else if (config.type === 'iis') {
     // Used for IISNode.
