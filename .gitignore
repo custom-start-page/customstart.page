@@ -11,4 +11,6 @@ public/css/main.css.map
 public/js/**/*.min.js
 public/js/**/*.min.js.map
 
+secrets.yml
+
 *~

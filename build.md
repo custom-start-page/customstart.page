@@ -23,3 +23,17 @@ This should create a `./dist/` folder which can be released.
 Note that you'll need to run `npm install --only=prod`.
 
 And you'll need to copy the required page files from `./pages/`.
+
+## Send image to Docker Hub
+
+Create a `secrets.yml` in the root:
+
+```
+docker_password: "00000000-0000-0000-0000-000000000000 "
+```
+
+Run Drone Docker image build:
+
+```
+drone exec --pipeline docker --secret-file secrets.yml
+```

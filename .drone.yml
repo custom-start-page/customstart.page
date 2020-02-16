@@ -1,5 +1,4 @@
 kind: pipeline
-type: docker
 name: default
 
 steps:
@@ -18,3 +17,18 @@ steps:
 trigger:
   branch:
   - master
+
+---
+kind: pipeline
+name: docker
+
+steps:
+- name: docker
+  image: plugins/docker
+  settings:
+    # dry_run: true
+    username: harvzor
+    password:
+      from_secret: docker_password
+    repo: harvzor/custom-start-page
+    tags: latest
