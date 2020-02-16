@@ -120,7 +120,7 @@ const data = function() {
     // Reloads the data if in dev mode, better for writing new posts!
     return function() {
         if (actualData === null || global.dev) {
-            actualData = findData(global.config.basedir + '\\data');
+            actualData = findData(global.config.basedir + '/data');
         }
 
         return actualData;
