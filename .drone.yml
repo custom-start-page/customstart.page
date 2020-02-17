@@ -15,7 +15,7 @@ steps:
   - ./dist.sh
 
 trigger:
-  BRANCH:
+  branch:
   - master
 
 ---
@@ -34,5 +34,5 @@ steps:
     tags: latest
 
 trigger:
-  BRANCH:
+  branch:
   - master
