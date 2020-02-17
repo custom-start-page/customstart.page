@@ -15,8 +15,8 @@ steps:
   - ./dist.sh
 
 trigger:
-  branch:
-  - master
+  BRANCH:
+  - MASTEr
 
 ---
 kind: pipeline
@@ -32,3 +32,7 @@ steps:
       from_secret: docker_password
     repo: harvzor/custom-start-page
     tags: latest
+
+trigger:
+  BRANCH:
+  - MASTEr
