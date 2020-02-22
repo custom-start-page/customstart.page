@@ -35,33 +35,8 @@ const data = function() {
 
     var actualData = null;
 
-    /**
-     * Reads a file.
-     * Will return HTML, even if the original format is Markdown.
-     * @param {string} path
-     * @param {boolean} isAmp
-     */
-    var getContent = function(path, isAmp) {
-        let contents = fs.readFileSync('data/' + path, 'utf8');
-
-        if (path.indexOf('.md') !== -1) {
-            if (isAmp) {
-                return marked(contents, { renderer: renderer.amp, sanitize: true });
-            }
-
-            return marked(contents, { renderer: renderer.normal })
-                // Replace YouTube links with an embedded YouTube video.
-                .replace(
-                    /<p><a target="_blank" href=\"(?:https:\/\/www\.youtube\.com\/watch\?v=){1}(.*)\">([^<]*)<\/a><\/p>/gm,
-                    `<a class="youtube-video" href="https://www.youtube.com/embed/$1" target="_blank" style="background-image:url('https://img.youtube.com/vi/$1/maxresdefault.jpg')" data-id="$1"><div class="icon-play youtube-video-play"></div><div class="youtube-video-title">$2</div></a>`
-                );
-        }
-
-        return contents;
-    };
-
-    var findData = (dir, data) => {
-        data = data || {};
+    var findData = (dir, currentData) => {
+        currentData = currentData || {};
         let paths = fs.readdirSync(dir);
 
         // Foreach of the JSON files...
@@ -80,19 +55,17 @@ const data = function() {
                     }
 
                     if (typeof json.bodyText !== 'undefined') {
-                        json.bodyText = getContent(json.bodyText);
-
-                        //json.ampBodyText = getContent(page.bodyText, true);
+                        json.bodyText = data.getContent(json.bodyText);
                     }
 
                     // The lastmod tag is optional in sitmaps and in most of the cases it's ignored by search engines
                     // https://stackoverflow.com/a/31354426
                     //json.lastModified = fs.statSync(fullPath).mtime;
 
-                    if (helpers.isObject(data)) {
-                        data[json.name] = json;
+                    if (helpers.isObject(currentData)) {
+                        currentData[json.name] = json;
                     } else {
-                        data.push(json);
+                        currentData.push(json);
                     }
                 } catch (e) {
                     logger.error(e);
@@ -103,18 +76,18 @@ const data = function() {
         paths
             .filter(path => !path.includes('.'))
             .forEach(path => {
-                if (typeof data[path] === 'undefined') {
-                    data[path] = [];
+                if (typeof currentData[path] === 'undefined') {
+                    currentData[path] = [];
 
-                    findData(dir + '/' + path, data[path]);
+                    findData(dir + '/' + path, currentData[path]);
                 } else {
-                    data[path].children = [];
+                    currentData[path].children = [];
 
-                    findData(dir + '/' + path, data[path].children);
+                    findData(dir + '/' + path, currentData[path].children);
                 }
             });
 
-        return data;
+        return currentData;
     };
 
     // Reloads the data if in dev mode, better for writing new posts!
@@ -126,6 +99,27 @@ const data = function() {
         return actualData;
     };
 }();
+
+/**
+ * Reads a file.
+ * Will return HTML, even if the original format is Markdown.
+ * @param {string} path
+ * @param {boolean} isAmp
+ */
+data.getContent = function(path) {
+    let contents = fs.readFileSync('data/' + path, 'utf8');
+
+    if (path.indexOf('.md') !== -1) {
+        return marked(contents, { renderer: renderer.normal })
+            // Replace YouTube links with an embedded YouTube video.
+            .replace(
+                /<p><a target="_blank" href=\"(?:https:\/\/www\.youtube\.com\/watch\?v=){1}(.*)\">([^<]*)<\/a><\/p>/gm,
+                `<a class="youtube-video" href="https://www.youtube.com/embed/$1" target="_blank" style="background-image:url('https://img.youtube.com/vi/$1/maxresdefault.jpg')" data-id="$1"><div class="icon-play youtube-video-play"></div><div class="youtube-video-title">$2</div></a>`
+            );
+    }
+
+    return contents;
+};
 
 data.forEachPage = function(callback, obj) {
     obj = obj || data();
