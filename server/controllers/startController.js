@@ -165,15 +165,34 @@ module.exports = function() {
             track.pageView(req);
         }
 
+        const root = path.join(
+            global.config.basedir,
+            'pages/' + themeName,
+            // Dirty hack, should fix:
+            filePath === 'preview.jpg' || filePath === 'preview.png'
+                ? (meta.outputDir || '')
+                : ''
+        );
+
+        // If the page has no favicon, send the default one.
+        if (filePath === 'favicon.ico') {
+            if (fs.existsSync(path.join(root + filePath)) === false) {
+                const faviconPath = path.join(
+                    global.config.basedir,
+                    'public/favicon.ico'
+                );
+
+                res.sendFile(faviconPath, function(err) {
+                    if (err)
+                        next(err)
+                });
+
+                return;
+            }
+        }
+
         const options = {
-            root: path.join(
-                global.config.basedir,
-                'pages/' + themeName,
-                // Dirty hack, should fix:
-                filePath === 'preview.jpg' || filePath === 'preview.png'
-                    ? (meta.outputDir || '')
-                    : ''
-            ),
+            root: root,
             dotfiles: 'deny',
             headers: {
                 'x-timestamp': Date.now(),
@@ -181,7 +200,7 @@ module.exports = function() {
             }
         };
 
-        res.sendFile(filePath, options, function (err) {
+        res.sendFile(filePath, options, function(err) {
             if (err)
                 next(err)
         });
