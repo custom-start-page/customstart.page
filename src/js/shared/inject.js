@@ -205,7 +205,14 @@ class Modal extends HTMLElement {
     _getDomainName() {
         const hostName = window.location.hostname;
 
-        return hostName.substring(hostName.lastIndexOf(".", hostName.lastIndexOf(".") - 1) + 1);
+        const split = hostName.split('.');
+
+        // Should only match the case where it's *.localhost.
+        if (split.length === 2) {
+            return split[1];
+        } else {
+            return split[split.length - 1] + '.' + split[split.length - 2];
+        }
     }
     _loadIframe() {
         this._iframe.src = '//' + this._getDomainName() + '/news';
