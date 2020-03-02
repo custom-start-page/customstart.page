@@ -18,7 +18,10 @@ app.use(cookieSession({
 
     // Cookie Options
     maxAge: 24 * 60 * 60 * 1000 * 365, // 365 days
-    domain: config.domain, // Allows same session between subdomains.
+    // Sets `HostOnly` to false: https://stackoverflow.com/questions/12387338/what-is-a-host-only-cookie
+    // So subdomains can share cookies.
+    // Though this won't work with localhost and subdomains :(
+    domain: config.domain,
 }));
 
 app.use((req, res, next) => {
