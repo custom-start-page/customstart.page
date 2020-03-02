@@ -32,6 +32,7 @@
                 </div>
             </footer>
         <% } %>
-        <% include ./partials/analytics.ejs%>
-    </body>
+        <% if (typeof hideFooter === 'undefined' || hideFooter === false) { %>
+            <% include ./partials/analytics.ejs %>
+        <% } %>
 </html>
