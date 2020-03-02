@@ -150,12 +150,20 @@ module.exports = function() {
         const html = fs.readFileSync(global.config.basedir + '/pages/' + themeName + '/index.html');
 
         res.write(html);
+
         // Dirty inject.
         if (config.dev) {
             res.write(`<script src="//localhost/js/shared/inject.js"></script>`);
         } else {
             res.write(`<script src="/js/shared/inject.min.js"></script>`);
         }
+
+        if (req.query.iframe !== 'true') {
+            const ga = fs.readFileSync(global.config.basedir + '/views/partials/ga.ejs');
+
+            res.write(ga);
+        }
+
         res.end();
     });
 
