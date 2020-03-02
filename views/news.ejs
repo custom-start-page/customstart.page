@@ -63,7 +63,7 @@
 %>
 <div class="container">
     <h1><%= pageTitle %></h1>
-    <% news.forEach(newsItem => { %>
+    <% news.sort((a, b) => a.date - b.date).forEach(newsItem => { %>
         <h2><%= friendlyDate(newsItem.date) %></h2>
         <%- newsItem.bodyText %>
     <% }); %>

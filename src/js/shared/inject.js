@@ -1,3 +1,16 @@
+const getDomainName = () => {
+    const hostName = window.location.hostname;
+
+    const split = hostName.split('.');
+
+    // Should only match the case where it's *.localhost.
+    if (split.length === 2) {
+        return '//' + split[1];
+    } else {
+        return '//' + split[split.length - 1] + '.' + split[split.length - 2];
+    }
+};
+
 class Modal extends HTMLElement {
     constructor() {
         super();
@@ -202,26 +215,21 @@ class Modal extends HTMLElement {
         this.shadowRoot.querySelector("button").removeEventListener('click', this._showModal);
         this.shadowRoot.querySelector(".close").removeEventListener('click', this._hideModal);
     }
-    _getDomainName() {
-        const hostName = window.location.hostname;
+    _onShow() {
+        const notificationStorage = new NotificationStorage();
 
-        const split = hostName.split('.');
-
-        // Should only match the case where it's *.localhost.
-        if (split.length === 2) {
-            return split[1];
-        } else {
-            return split[split.length - 1] + '.' + split[split.length - 2];
-        }
+        notificationStorage.update(Date.now());
     }
     _loadIframe() {
-        this._iframe.src = '//' + this._getDomainName() + '/news';
+        this._iframe.src = getDomainName() + '/news';
     }
     _showModal() {
         this._modalVisible = true;
         this._modal.style.display = 'block';
 
         this._loadIframe();
+
+        this._onShow();
     }
     _hideModal() {
         this._modalVisible = false;
@@ -232,12 +240,103 @@ class Modal extends HTMLElement {
 customElements.define('custom-start-page-modal', Modal);
 
 class Notification {
+    /**
+     * @type {Date}
+     * @memberof Notification
+     */
+    date;
+    /**
+     * @type {string}
+     * @memberof Notification
+     */
+    bodyText;
+    constructor(obj) {
+        this.date = Date.parse(obj.date);
+        this.bodyText = obj.bodyText;
+    }
+}
+
+class NotificationApiClient {
+    constructor() {
+        this.baseApi = getDomainName() + '/api/notifications';
+    }
+    /**
+     * @returns {Promise<Notification[]>}
+     * @memberof NotificationApiClient
+     */
+    async get() {
+        return await fetch(this.baseApi)
+            .then(res => res.json())
+            .then(items => {
+                return items.map(item => new Notification(item));
+            })
+            .catch(err => { throw err });
+    }
+}
+
+/**
+ * For storing the status of this users notifcation status.
+ */
+class NotificationStorage {
+    constructor() {
+        this.storageKey = 'customstart-news';
+    }
+    get() {
+        const retrievedObject = localStorage.getItem(this.storageKey);
+
+        if (retrievedObject) {
+            return JSON.parse(retrievedObject);
+        }
+
+        this.update(Date.now());
+
+        return this.get();
+    }
+    update(newDate) {
+        this._set({
+            version: '0.0.1',
+            date: newDate,
+        });
+    }
+    _set(obj) {
+        localStorage.setItem(this.storageKey, JSON.stringify(obj));
+    }
+}
+
+/**
+ * Creates a clickable area that shows the notifications if the user clicks on it.
+ * @class NotificationModalTrigger
+ */
+class NotificationModalTrigger {
     show() {
         const modal = document.createElement('custom-start-page-modal');
 
         document.querySelector('body')
             .appendChild(modal);
     }
+    _isIframe() {
+        return window != window.top;
+    }
+    async shouldShow() {
+        if (this._isIframe()) {
+            return false
+        }
+
+        const notificationStorage = new NotificationStorage();
+        const notificationApiClient = new NotificationApiClient();
+
+        const notifications = await notificationApiClient.get()
+
+        console.log(notificationStorage.get().date, notifications[0].date);
+
+        return notificationStorage.get().date < notifications[0].date;
+    }
 }
 
-new Notification().show();
+(async function() {
+    const notificationModalTrigger = new NotificationModalTrigger();
+
+    if (await notificationModalTrigger.shouldShow()) {
+        notificationModalTrigger.show();
+    }
+}());

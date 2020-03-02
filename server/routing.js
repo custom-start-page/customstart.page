@@ -37,6 +37,8 @@ const setupControllers = (obj) => {
 const routing = function() {
     setupControllers(data());
 
+    require('./apiControllers/notificationController.js')();
+
     require('./controllers/startController.js')();
 
     /////////////////

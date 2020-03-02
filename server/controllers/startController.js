@@ -144,7 +144,6 @@ module.exports = function() {
     // Render startpage.
     app.get('/', function (req, res, next) {
         const themeName = req.vhost[0];
-        const meta = new Theme(themeName).getMeta();
 
         track.pageView(req);
 
@@ -152,7 +151,11 @@ module.exports = function() {
 
         res.write(html);
         // Dirty inject.
-        res.write(`<script src="/js/shared/inject.min.js"></script>`);
+        if (config.dev) {
+            res.write(`<script src="//localhost/js/shared/inject.js"></script>`);
+        } else {
+            res.write(`<script src="/js/shared/inject.min.js"></script>`);
+        }
         res.end();
     });
 
