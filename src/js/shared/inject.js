@@ -15,8 +15,8 @@ class Modal extends HTMLElement {
     constructor() {
         super();
         this._modalVisible = false;
-        this._modal;
-        this._iframe;
+        this._modal = null;
+        this._iframe = null;
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
         <style>
@@ -202,8 +202,7 @@ class Modal extends HTMLElement {
                 </div>
                 <iframe></iframe>
             </div>
-        </div>
-        `
+        </div>`;
     }
     connectedCallback() {
         this._iframe = this.shadowRoot.querySelector("iframe");
@@ -240,16 +239,16 @@ class Modal extends HTMLElement {
 customElements.define('custom-start-page-modal', Modal);
 
 class Notification {
-    /**
-     * @type {Date}
-     * @memberof Notification
-     */
-    date;
-    /**
-     * @type {string}
-     * @memberof Notification
-     */
-    bodyText;
+    // /**
+    //  * @type {Date}
+    //  * @memberof Notification
+    //  */
+    // date;
+    // /**
+    //  * @type {string}
+    //  * @memberof Notification
+    //  */
+    // bodyText;
     constructor(obj) {
         this.date = Date.parse(obj.date);
         this.bodyText = obj.bodyText;
