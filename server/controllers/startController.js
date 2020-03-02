@@ -159,7 +159,7 @@ module.exports = function() {
         }
 
         if (req.query.iframe !== 'true') {
-            const ga = fs.readFileSync(global.config.basedir + '/views/partials/ga.ejs');
+            const ga = fs.readFileSync(global.config.basedir + '/views/partials/analytics.ejs');
 
             res.write(ga);
         }
