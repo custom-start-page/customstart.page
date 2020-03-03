@@ -54,17 +54,19 @@
     };
 
     // A general way for rendering dates on the front end.
-    const friendlyDate = function(d) {
-        var date = new Date(d);
+    const friendlyDate = function(date) {
         return getOrdinal(date.getDate())
             + " " + getMonth(date.getMonth())
             + " " + date.getFullYear();
     };
 %>
 <div class="container">
-    <h1><%= pageTitle %></h1>
-    <% news.sort((a, b) => a.date - b.date).forEach(newsItem => { %>
-        <h2><%= friendlyDate(newsItem.date) %></h2>
+    <% news.forEach(newsItem => { %>
+        <h2><%= newsItem.version %></h2>
+        <i><%= friendlyDate(newsItem.date) %></i>
+        <br />
+        <br />
         <%- newsItem.bodyText %>
+        <hr />
     <% }); %>
 </div>

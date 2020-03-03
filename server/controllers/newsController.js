@@ -8,7 +8,12 @@ module.exports = function(page) {
         track.pageView(req);
 
         const news = data().news
-            .sort(newsItem => new Date(newsItem.date));
+            .map(newsItem => {
+                newsItem.date = new Date(newsItem.date);
+
+                return newsItem;
+            })
+            .sort(newsItem => newsItem.date);
 
         res.render('news', {
             layout: 'common',
