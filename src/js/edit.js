@@ -30,11 +30,8 @@ const del = () => {
 };
 
 async function render() {
-    const formDataPromise = storage.get();
-    const schemaPromise = getSchema();
-
-    const formData = await formDataPromise;
-    const schema = await schemaPromise;
+    const formData = await storage.get();
+    const schema = await getSchema();
 
     ReactDOM.render((
         <Form
