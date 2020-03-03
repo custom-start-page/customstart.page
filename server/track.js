@@ -10,9 +10,10 @@ const track = function() {
             base: req.protocol + '://' + req.headers.host,
             gaId: config.gaId,
             userId: req.session.userId,
+            trackingDisabled: req.session.disableTracking,
         });
 
-        if (config.gaId && req.session.userId) {
+        if (config.gaId && req.session.userId && req.session.trackingDisabled !== true) {
             const visitor = ua(config.gaId, req.session.userId);
 
             visitor

@@ -38,6 +38,7 @@ const routing = function() {
     setupControllers(data());
 
     require('./apiControllers/notificationController.js')();
+    require('./apiControllers/trackingController.js')();
 
     require('./controllers/startController.js')();
 
