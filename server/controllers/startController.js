@@ -158,7 +158,7 @@ module.exports = function() {
             res.write(`<script src="/js/shared/inject.min.js"></script>`);
         }
 
-        if (req.query.iframe !== 'true') {
+        if (req.query.iframe !== 'true' && req.session.disableTracking !== true) {
             const ga = fs.readFileSync(global.config.basedir + '/views/partials/analytics.ejs');
 
             res.write(ga);
