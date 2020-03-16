@@ -1,6 +1,6 @@
-# customstart.page
+# https://customstart.page
 
-... is where you start your browsing experience. Use an existing start page and customise it to your needs.
+> Choose a start page and start customising! These start pages were provided by the community and can be personalised to fit you best.
 
 ## Screenshots
 
@@ -12,38 +12,28 @@
 
 ![Edit](/.github/assets/2020-01-12/edit.png)
 
-## Domain ideas
+## About
 
-- customstart.page
+This project aims to solve a problem - **how can start pages be hosted and configured in a unified and friendly way?**
 
-- st.art
-- customst.art
+Many people provide source code to their custom start pages but don't provide hosting or an intuitive way to customise the start page. Custom Start Page aims to solve that.
 
-- customstartpage.*
-- start.ninja (15EUR)
-- startpage.club (16EUR)
-- quickstart.*
-- launchpad.*
-- springboard.*
+I built this project in my spare time and hope to continue supporting it, but updates are likely to be rare.
 
-## Inspiration
+## Features
 
-- https://startpages.github.io/
+- a gallery of available start pages
+- hosting of start pages
+- using a form, customise the start page to your needs, things such as:
+    - links
+    - the background image
+    - your name
+    - the rss feed
 
-## Competition
+## Technology used
 
-### Customisable start pages
-
-- https://start.me/
-- http://start.io/
-- https://mystartpage.net/
-- https://www.mystart.com/
-
-### Just a search
-
-- Built in browser start page
-- https://www.google.co.uk/
-- https://www.startpage.com/
+- NodeJS
+- [React JSON Schema Form](https://github.com/rjsf-team/react-jsonschema-form)
 
 ## Issues
 
