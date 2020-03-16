@@ -7,7 +7,7 @@ const getDomainName = () => {
     if (split.length === 2) {
         return '//' + split[1];
     } else {
-        return '//' + split[split.length - 1] + '.' + split[split.length - 2];
+        return '//' + split[split.length - 2] + '.' + split[split.length - 1];
     }
 };
 

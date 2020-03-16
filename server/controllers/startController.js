@@ -141,33 +141,34 @@ module.exports = function() {
         res.json(schema);
     });
 
-    // Render startpage.
-    app.get('/', function (req, res, next) {
+    app.get('/manifest/*', (req, res, next) => {
         const themeName = req.vhost[0];
+        const meta = new Theme(themeName).getMeta();
+        const filePath = getFilePath(req);
 
-        track.pageView(req);
+        const root = path.join(
+            global.config.basedir,
+            'pages',
+            themeName,
+            'manifest'
+        );
 
-        const html = fs.readFileSync(global.config.basedir + '/pages/' + themeName + '/index.html');
+        const options = {
+            root: root,
+            dotfiles: 'deny',
+            headers: {
+                'x-timestamp': Date.now(),
+                'x-sent': true
+            }
+        };
 
-        res.write(html);
-
-        // Dirty inject.
-        if (config.dev) {
-            res.write(`<script src="//localhost/js/shared/inject.js"></script>`);
-        } else {
-            res.write(`<script src="/js/shared/inject.min.js"></script>`);
-        }
-
-        if (req.query.iframe !== 'true' && req.session.disableTracking !== true) {
-            const ga = fs.readFileSync(global.config.basedir + '/views/partials/analytics.ejs');
-
-            res.write(ga);
-        }
-
-        res.end();
+        res.sendFile(filePath, options, function(err) {
+            if (err)
+                next(err)
+        });
     });
 
-    app.get('/*', function (req, res, next) {
+    app.get('/*', (req, res, next) => {
         const themeName = req.vhost[0];
         const meta = new Theme(themeName).getMeta();
         const filePath = getFilePath(req);
@@ -178,12 +179,12 @@ module.exports = function() {
 
         const root = path.join(
             global.config.basedir,
-            'pages/' + themeName,
-            // Dirty hack, should fix:
-            filePath === 'preview.jpg' || filePath === 'preview.png'
-                ? (meta.outputDir || '')
-                : ''
+            'pages',
+            themeName,
+            meta.outputDir || ''
         );
+
+        logger.info('root: ', root);
 
         // If the page has no favicon, send the default one.
         if (filePath === 'favicon.ico') {
@@ -211,10 +212,32 @@ module.exports = function() {
             }
         };
 
-        res.sendFile(filePath, options, function(err) {
-            if (err)
-                next(err)
-        });
+
+        if (filePath === 'index.html' && req.query.iframe !== 'true') {
+            const html = fs.readFileSync(path.join(root, 'index.html'));
+
+            res.write(html);
+
+            // Dirty inject.
+            if (config.dev) {
+                res.write(`<script src="//localhost/js/shared/inject.js"></script>`);
+            } else {
+                res.write(`<script src="/js/shared/inject.min.js"></script>`);
+            }
+
+            if (req.query.iframe !== 'true' && req.session.disableTracking !== true) {
+                const ga = fs.readFileSync(global.config.basedir + '/views/partials/analytics.ejs');
+
+                res.write(ga);
+            }
+
+            res.end();
+        } else {
+            res.sendFile(filePath, options, function(err) {
+                if (err)
+                    next(err)
+            });
+        }
 
         // if (filePath.endsWith('/') || filePath.includes('.')) {
         //     res.sendFile(filePath, options, function (err) {
