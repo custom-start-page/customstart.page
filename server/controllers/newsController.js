@@ -13,7 +13,7 @@ module.exports = function(page) {
 
                 return newsItem;
             })
-            .sort(newsItem => newsItem.date);
+            .sort((newsItemA, newsItemB) => newsItemB.date - newsItemA.date);
 
         res.render('news', {
             layout: 'common',
