@@ -6,7 +6,12 @@ const app = require('../app').main;
 module.exports = function() {
     app.get('/api/notifications/', function (req, res) {
         const news = data().news
-            .sort(newsItem => new Date(newsItem.date));
+            .map(newsItem => {
+                newsItem.date = new Date(newsItem.date);
+
+                return newsItem;
+            })
+            .sort((newsItemA, newsItemB) => newsItemB.date - newsItemA.date);
 
         res.json(news);
     });

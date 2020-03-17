@@ -254,7 +254,7 @@ class Notification {
     //  */
     // bodyText;
     constructor(obj) {
-        this.date = Date.parse(obj.date);
+        this.date = new Date(obj.date);
         this.bodyText = obj.bodyText;
     }
 }
@@ -336,6 +336,8 @@ class NotificationModalTrigger {
         const notificationApiClient = new NotificationApiClient();
 
         const notifications = await notificationApiClient.get()
+
+        console.log(notificationStorage.get().date, notifications[0].date)
 
         return notificationStorage.get().date < notifications[0].date;
     }
