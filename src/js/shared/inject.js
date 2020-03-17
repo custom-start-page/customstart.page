@@ -288,10 +288,14 @@ class NotificationStorage {
         const retrievedObject = Cookies.get(this.storageKey);
 
         if (retrievedObject) {
-            return retrievedObject;
+            const parsedObj = JSON.parse(retrievedObject);
+
+            parsedObj.date = new Date(parsedObj.date);
+
+            return parsedObj;
         }
 
-        this.update(Date.now());
+        this.update(new Date(0));
 
         return this.get();
     }
