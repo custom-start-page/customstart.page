@@ -337,8 +337,6 @@ class NotificationModalTrigger {
 
         const notifications = await notificationApiClient.get()
 
-        console.log(notificationStorage.get().date, notifications[0].date)
-
         return notificationStorage.get().date < notifications[0].date;
     }
 }
