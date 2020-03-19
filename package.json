@@ -1,16 +1,6 @@
 {
   "name": "start",
-  "version": "0.0.1",
-  "description": "My start page...",
-  "contributors": [
-    {
-      "name": "Harvey Williams"
-    }
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Harvzor/start"
-  },
+  "version": "0.0.0",
   "scripts": {
     "start": "gulp | .\\node_modules\\.bin\\bunyan -o short",
     "build": "gulp build"
