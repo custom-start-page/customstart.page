@@ -307,7 +307,7 @@ class NotificationStorage {
     }
     _set(obj) {
         Cookies.set(this.storageKey, obj, {
-            expires: 7,
+            expires: 365,
             domain: '.' + getDomainName(),
         });
     }
