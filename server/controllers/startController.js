@@ -32,6 +32,38 @@ class Theme {
 
         return data;
     }
+    /**
+     * Get the HTML for the start page.
+     * @param {boolean} withAnalytics If the HTML should include analytics.
+     * @returns {string}
+     */
+    getIndexHtml(withAnalytics) {
+        const root = this.getPath();
+        let html = fs.readFileSync(path.join(root, 'index.html'), 'utf-8');
+
+        // Dirty inject.
+        if (config.dev) {
+            html += `<script src="//localhost/js/shared/inject.js"></script>`;
+        } else {
+            html += `<script src="/js/shared/inject.min.js"></script>`;
+        }
+
+        if (withAnalytics) {
+            const ga = fs.readFileSync(global.config.basedir + '/views/partials/analytics.ejs');
+
+            html += ga;
+        }
+
+        return html;
+    }
+    getPath() {
+        return path.join(
+            global.config.basedir,
+            'pages',
+            this.themeName,
+            this.getMeta().outputDir || ''
+        );
+    }
 }
 
 module.exports = function() {
@@ -170,21 +202,15 @@ module.exports = function() {
 
     app.get('/*', (req, res, next) => {
         const themeName = req.vhost[0];
-        const meta = new Theme(themeName).getMeta();
+        const theme = new Theme(themeName);
+        const meta = theme.getMeta();
         const filePath = getFilePath(req);
 
         if (filePath === 'index.html' && req.query.iframe !== 'true') {
             track.pageView(req);
         }
 
-        const root = path.join(
-            global.config.basedir,
-            'pages',
-            themeName,
-            meta.outputDir || ''
-        );
-
-        logger.info('root: ', root);
+        const root = theme.getPath();
 
         // If the page has no favicon, send the default one.
         if (filePath === 'favicon.ico') {
@@ -212,26 +238,11 @@ module.exports = function() {
             }
         };
 
-
         if (filePath === 'index.html' && req.query.iframe !== 'true') {
-            const html = fs.readFileSync(path.join(root, 'index.html'));
+            var withAnalytics = req.query.iframe !== 'true' && req.session.disableTracking !== true;
+            var html = theme.getIndexHtml(withAnalytics);
 
-            res.write(html);
-
-            // Dirty inject.
-            if (config.dev) {
-                res.write(`<script src="//localhost/js/shared/inject.js"></script>`);
-            } else {
-                res.write(`<script src="/js/shared/inject.min.js"></script>`);
-            }
-
-            if (req.query.iframe !== 'true' && req.session.disableTracking !== true) {
-                const ga = fs.readFileSync(global.config.basedir + '/views/partials/analytics.ejs');
-
-                res.write(ga);
-            }
-
-            res.end();
+            res.send(html);
         } else {
             res.sendFile(filePath, options, function(err) {
                 if (err)

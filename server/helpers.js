@@ -1,5 +1,3 @@
-'use strict';
-
 const helpers = {
     // Returns a date in "yyyy-MM-dd" format.
     dateToString: function(date) {

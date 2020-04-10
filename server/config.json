@@ -1,5 +1,5 @@
 {
-    "domain": "localhost",
+    "domain": "customstart.local",
     "port": 80,
     "type": "node",
     "useServiceWorker": false,
