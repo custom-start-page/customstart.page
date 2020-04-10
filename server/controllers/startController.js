@@ -40,10 +40,23 @@ class Theme {
      * @returns {string}
      */
     getIndexHtml(withAnalytics) {
+        const meta = this.getMeta();
         const root = this.getPath();
         const html = fs.readFileSync(path.join(root, 'index.html'), 'utf-8');
 
         const $ = cheerio.load(html);
+
+        // Change meta for SEO.
+        {
+            // Remove existing meta.
+            $('head title').replaceWith('<!-- Removed custom title -->');
+            $('head meta[name="description"]').replaceWith('<!-- Removed custom meta description. -->');
+
+            // Add my meta.
+            $('head').append('<!-- Meta injected by Custom Start Page for SEO purposes -->\r\n');
+            $('head').append(`<title>${meta.name} || Custom Start Page</title>\r\n`);
+            $('head').append(`<meta name="description" content="${meta.name} is a free, open source and customisable start page for your browser, hosted by Custom Start Page.">\r\n`);
+        }
 
         // Dirty inject.
         if (config.dev) {
