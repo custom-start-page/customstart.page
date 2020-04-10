@@ -26,7 +26,8 @@ module.exports = function(page) {
         res.render('index', {
             layout: 'common',
             relativeUrl: '',
-            bodyText: page.bodyText,
+            help: page.help,
+            faq: page.faq,
             themes: themeManifests,
             metaDescription: page.metaDescription,
         });

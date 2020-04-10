@@ -1,36 +1,29 @@
 <section class="container">
     <p class="text-center">pick a start page and start customising</p>
     <div class="row">
-        <% for (let theme of themes) { %>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <a href="//<%= theme.slug %>.<%- config.domain %>:/preview">
-                        <div class="panel-heading">
-                            <h2 class="panel-title"><%= theme.name %></h2>
-                        </div>
-                        <div class="panel-image-container">
-                            <img width="100%" src="//<%= theme.slug %>.<%- config.domain %>:/manifest/<%= theme.preview %>" />
-                            <ul class="pills">
-                                <% theme.features.forEach(feature => { %>
-                                    <li><%= feature %></li>
-                                <% }) %>
-                            </ul>
-                        </div>
-                    </a>
-                    <div class="panel-footer">
-                        by <a href="<%= theme.author.link %>" target="_blank"><%= theme.author.name %></a>
-                    </div>
-                </div>
-                </a>
-            </div>
-        <% } %>
+        <%- include('partials/themes', { themes: themes.slice(0, 6) }) %>
     </div>
 </section>
 <section class="jumbotron">
     <div class="container">
         <div class="row text-center">
             <div class="col-sm-6 col-sm-push-3">
-                <%- bodyText %>
+                <%- help %>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container">
+    <p class="text-center">yet more themes</p>
+    <div class="row">
+        <%- include('partials/themes', { themes: themes.slice(6, themes.length) }) %>
+    </div>
+</section>
+<section class="jumbotron">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-sm-6 col-sm-push-3">
+                <%- faq %>
             </div>
         </div>
     </div>

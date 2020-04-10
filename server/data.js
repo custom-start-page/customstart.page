@@ -54,11 +54,13 @@ const data = function() {
                         return;
                     }
 
-                    if (typeof json.bodyText !== 'undefined') {
-                        json.bodyText = data.getContent(json.bodyText);
+                    for (const key of Object.keys(json)) {
+                        if (typeof json[key] === 'string' && json[key].endsWith('.md')) {
+                            json[key] = data.getContent(json[key]);
+                        }
                     }
 
-                    // The lastmod tag is optional in sitmaps and in most of the cases it's ignored by search engines
+                    // The lastmod tag is optional in sitemaps and in most of the cases it's ignored by search engines
                     // https://stackoverflow.com/a/31354426
                     //json.lastModified = fs.statSync(fullPath).mtime;
 
