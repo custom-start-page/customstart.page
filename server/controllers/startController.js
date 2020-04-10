@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
+const cheerio = require('cheerio');
+
 const logger = require('../logger.js');
 const track =  require('../track.js');
 const app = require('../app').start;
@@ -39,22 +41,24 @@ class Theme {
      */
     getIndexHtml(withAnalytics) {
         const root = this.getPath();
-        let html = fs.readFileSync(path.join(root, 'index.html'), 'utf-8');
+        const html = fs.readFileSync(path.join(root, 'index.html'), 'utf-8');
+
+        const $ = cheerio.load(html);
 
         // Dirty inject.
         if (config.dev) {
-            html += `<script src="//localhost/js/shared/inject.js"></script>`;
+            $('body').append(`<script src="//localhost/js/shared/inject.js"></script>`);
         } else {
-            html += `<script src="/js/shared/inject.min.js"></script>`;
+            $('body').append(`<script src="/js/shared/inject.min.js"></script>`);
         }
 
         if (withAnalytics) {
-            const ga = fs.readFileSync(global.config.basedir + '/views/partials/analytics.ejs');
+            const ga = fs.readFileSync(global.config.basedir + '/views/partials/analytics.ejs', 'utf-8');
 
-            html += ga;
+            $('body').append(ga);
         }
 
-        return html;
+        return $.html();
     }
     getPath() {
         return path.join(
