@@ -1,0 +1,87 @@
+{
+ "linkGroups": [
+  {
+   "name": "social",
+   "links": [
+    {
+     "name": "discord",
+     "url": "https://discordapp.com/"
+    },
+    {
+     "url": "https://arisuchan.jp/",
+     "name": "arisuchan"
+    },
+    {
+     "name": "lainchan",
+     "url": "https://lainchan.org/"
+    },
+    {
+     "name": "twitter",
+     "url": "https://twitter.com/"
+    }
+   ]
+  },
+  {
+   "name": "entertainment",
+   "links": [
+    {
+     "url": "https://www.youtube.com",
+     "name": "youtube"
+    },
+    {
+     "url": "https://www.twitch.tv",
+     "name": "twitch"
+    },
+    {
+     "url": "https://www.plex.com",
+     "name": "plex"
+    },
+    {
+     "url": "https://www.netflix.com",
+     "name": "netflix"
+    },
+    {
+     "url": "https://www.nreboot.com/",
+     "name": "nreboot"
+    }
+   ]
+  },
+  {
+   "name": "code",
+   "links": [
+    {
+     "url": "https://www.github.com/",
+     "name": "github"
+    },
+    {
+     "url": "https://www.codepen.io/",
+     "name": "codepen"
+    },
+    {
+     "name": "mozilla dev",
+     "url": "https://developer.mozilla.org/"
+    },
+    {
+     "name": "devdocs",
+     "url": "http://devdocs.io/"
+    }
+   ]
+  }
+ ],
+ "userInformation": [
+    {
+     "key": "User",
+     "value": "orion"
+    },
+    {
+     "key": "Account Created",
+     "value": "Aug 1998"
+    },
+    {
+     "key": "Bio",
+     "value": "what is good"
+    }
+ ],
+ "backgroundUrl": "images/circling-ball-black-back.gif",
+ "imageWindowImageUrl": "https://pbs.twimg.com/media/DJeR25oXoAIhkVq.jpg"
+}
