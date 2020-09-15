@@ -35,6 +35,17 @@ I built this project in my spare time and hope to continue supporting it, but up
 - NodeJS
 - [React JSON Schema Form](https://github.com/rjsf-team/react-jsonschema-form)
 
+## Getting started
+
+You can check the `./Dockerfile` for better information about running this application.
+
+1. Run `npm start` in the base directory
+
+
+## Releasing/building
+
+Read [build.md](build.md).
+
 ## Issues
 
 ### Embedding the startpage with control from the outside
