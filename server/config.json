@@ -3,6 +3,5 @@
     "port": 80,
     "type": "node",
     "useServiceWorker": false,
-    "dev": false,
-    "gaId": ""
+    "dev": false
 }
