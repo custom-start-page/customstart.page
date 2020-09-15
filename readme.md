@@ -44,9 +44,9 @@ You can check the `./Dockerfile` for better information about running this appli
     127.0.0.1 customstart.local
     127.0.0.1 minimum-viable-startpage.customstart.local
     ```
-- Edit the `server/config.json` file to have the domain name you chose in the hosts file
-- Run `npm start` in the base directory
-- Navigate to the domain you chose in the hosts file
+2. Edit the `server/config.json` file to have the domain name you chose in the hosts file
+3. Run `npm start` in the base directory
+4. Navigate to the domain you chose in the hosts file
 
 ## Releasing/building
 
