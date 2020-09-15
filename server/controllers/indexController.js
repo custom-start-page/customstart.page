@@ -3,12 +3,10 @@ const path = require('path');
 const fs = require('fs');
 
 const logger = require('../logger.js');
-const track =  require('../track.js');
 const app =  require('../app.js').main;
 
 module.exports = function(page) {
     app.get('/', function(req, res) {
-        track.pageView(req);
 
         const dirs = fs.existsSync(global.config.basedir + '/pages')
             ? fs.readdirSync(global.config.basedir + '/pages')

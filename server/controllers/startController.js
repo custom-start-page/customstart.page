@@ -5,7 +5,6 @@ const fs = require('fs');
 const cheerio = require('cheerio');
 
 const logger = require('../logger.js');
-const track =  require('../track.js');
 const app = require('../app').start;
 
 class Theme {
@@ -66,9 +65,9 @@ class Theme {
         }
 
         if (withAnalytics) {
-            const ga = fs.readFileSync(global.config.basedir + '/views/partials/analytics.ejs', 'utf-8');
+            const analyticsInject = fs.readFileSync(global.config.basedir + '/views/partials/analytics.ejs', 'utf-8');
 
-            $('body').append(ga);
+            $('body').append(analyticsInject);
         }
 
         return $.html();
@@ -87,8 +86,6 @@ module.exports = function() {
     app.use('/js/shared/',  express.static('./public/js/shared/'));
 
     app.get('/edit', function (req, res, next) {
-        // track.pageView(req);
-
         const themeName = req.vhost[0];
         const hideFooter = req.query.hideFooter == 'true' || false;
 
@@ -102,8 +99,6 @@ module.exports = function() {
     });
 
     app.get('/preview', function (req, res, next) {
-        track.pageView(req);
-
         const themeName = req.vhost[0];
 
         res.render('preview', {
@@ -116,8 +111,6 @@ module.exports = function() {
     });
 
     // app.get('/', function (req, res, next) {
-    //     track.pageView(req);
-
     //     const themeName = req.vhost[0];
 
     //     res.render('view', {
@@ -223,10 +216,6 @@ module.exports = function() {
         const meta = theme.getMeta();
         const filePath = getFilePath(req);
 
-        if (filePath === 'index.html' && req.query.iframe !== 'true') {
-            track.pageView(req);
-        }
-
         const root = theme.getPath();
 
         // If the page has no favicon, send the default one.
@@ -256,7 +245,7 @@ module.exports = function() {
         };
 
         if (filePath === 'index.html' && req.query.iframe !== 'true') {
-            var withAnalytics = req.query.iframe !== 'true' && req.session.disableTracking !== true;
+            var withAnalytics = req.query.iframe !== 'true';
             var html = theme.getIndexHtml(withAnalytics);
 
             res.send(html);

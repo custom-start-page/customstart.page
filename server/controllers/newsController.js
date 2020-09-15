@@ -1,12 +1,9 @@
 const logger = require('../logger.js');
-const track =  require('../track.js');
 const app =  require('../app.js').main;
 const data =  require('../data.js');
 
 module.exports = function(page) {
     app.get(page.path, function(req, res) {
-        track.pageView(req);
-
         const news = data().news
             .map(newsItem => {
                 newsItem.date = new Date(newsItem.date);
