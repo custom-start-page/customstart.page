@@ -5,6 +5,7 @@ const fs = require('fs');
 const cheerio = require('cheerio');
 
 const logger = require('../logger.js');
+const markdownRenderer = require('../markdownRenderer.js');
 const app = require('../app').start;
 
 class Theme {
@@ -17,6 +18,17 @@ class Theme {
     }
     themeExists() {
         return fs.existsSync('./pages/' + this.themeName);
+    }
+    getReadme() {
+        const readmeFilePath = './pages/' + this.themeName + '/readme.md';
+
+        if (fs.existsSync(readmeFilePath)) {
+            const readmeMd = fs.readFileSync(readmeFilePath, 'utf8');
+
+            return markdownRenderer(readmeMd);
+        }
+
+        return 'No about. 😢';
     }
     getMeta() {
         const meta = JSON.parse(fs.readFileSync('./pages/' + this.themeName + '/manifest/meta.json', 'utf8'));
@@ -110,6 +122,21 @@ module.exports = function() {
             themeName: themeName,
             hideFooter: false,
             metaDescription: `Preview and edit the "${themeName}" startpage.`,
+        });
+    });
+
+    app.get('/readme', function (req, res, next) {
+        const themeName = req.vhost[0];
+
+        const readme = new Theme(themeName).getReadme();
+
+        res.render('readme', {
+            layout: 'common',
+            relativeUrl: '',
+            themeName: themeName,
+            hideFooter: true,
+            metaDescription: `Preview and edit the "${themeName}" startpage.`,
+            readme: readme,
         });
     });
 

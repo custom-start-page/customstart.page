@@ -1,34 +1,7 @@
-const marked = require('marked');
 const helpers = require('./helpers');
 const fs = require('fs');
 const logger = require('./logger');
-
-const renderer = function() {
-    var renderer = new marked.Renderer();
-    var ampRenderer = new marked.Renderer();
-
-    var linkRender = function(href, title, text) {
-        // If it is an external link...
-        if (href.startsWith('http')) {
-            return '<a target="_blank" href="'+ href +'">' + text + '</a>';
-        }
-
-        return '<a href="'+ href +'">' + text + '</a>';
-    };
-
-    renderer.link = linkRender;
-
-    ampRenderer.link = linkRender;
-
-    ampRenderer.image = function(href, title, text) {
-        return '<amp-img src="' + href + '" alt="' + text + '" layout="responsive" height="400" width="800"></amp-img>';
-    };
-
-    return {
-        normal: renderer,
-        amp: ampRenderer
-    };
-}();
+const markdownRenderer = require('./markdownRenderer');
 
 const data = function() {
     logger.info('data running');
@@ -112,7 +85,7 @@ data.getContent = function(path) {
     let contents = fs.readFileSync('data/' + path, 'utf8');
 
     if (path.indexOf('.md') !== -1) {
-        return marked(contents, { renderer: renderer.normal })
+        return markdownRenderer(contents)
             // Replace YouTube links with an embedded YouTube video.
             .replace(
                 /<p><a target="_blank" href=\"(?:https:\/\/www\.youtube\.com\/watch\?v=){1}(.*)\">([^<]*)<\/a><\/p>/gm,

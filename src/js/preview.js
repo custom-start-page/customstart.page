@@ -12,6 +12,7 @@ ReactDOM.render((
         <TabList>
             <Tab>Preview</Tab>
             <Tab>Edit</Tab>
+            <Tab>About</Tab>
         </TabList>
         <div className="tab-panel-container">
             <TabPanel>
@@ -19,6 +20,9 @@ ReactDOM.render((
             </TabPanel>
             <TabPanel>
                 <iframe className="edit-container" src="/edit?hideFooter=true"></iframe>
+            </TabPanel>
+            <TabPanel>
+                <iframe src="/readme"></iframe>
             </TabPanel>
         </div>
     </Tabs>
