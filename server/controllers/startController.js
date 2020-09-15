@@ -54,7 +54,7 @@ class Theme {
 
             // Add my meta.
             $('head').append('<!-- Meta injected by Custom Start Page for SEO purposes -->\r\n');
-            $('head').append(`<title>${meta.name} || Custom Start Page</title>\r\n`);
+            $('head').append(`<title>${meta.name} | Custom Start Page</title>\r\n`);
             $('head').append(`<meta name="description" content="${meta.name} is a free, open source and customisable start page for your browser, hosted by Custom Start Page.">\r\n`);
         }
 
