@@ -51,6 +51,9 @@ class Theme {
             $('head title').replaceWith('<!-- Removed custom title -->');
             $('head meta[name="description"]').replaceWith('<!-- Removed custom meta description. -->');
 
+            // Ensure the page always targets the top (if loaded in an iframe).
+            $('head').append('<base target="_top">\r\n');
+
             // Add my meta.
             $('head').append('<!-- Meta injected by Custom Start Page for SEO purposes -->\r\n');
             $('head').append(`<title>${meta.name} | Custom Start Page</title>\r\n`);
