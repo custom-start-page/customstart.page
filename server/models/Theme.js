@@ -28,8 +28,16 @@ module.exports = class Theme {
 
         return '';
     }
-    getReadme() {
-        const readmeFilePath = './pages/' + this.themeFolderName + '/readme.md';
+    getAbout() {
+        let readmeFilePath = './pages/' + this.themeFolderName + '/readme.md';
+
+        if (fs.existsSync(readmeFilePath)) {
+            const readmeMd = fs.readFileSync(readmeFilePath, 'utf8');
+
+            return markdownRenderer(readmeMd);
+        }
+
+        readmeFilePath = './pages/' + this.themeFolderName + '/manifest/about.md';
 
         if (fs.existsSync(readmeFilePath)) {
             const readmeMd = fs.readFileSync(readmeFilePath, 'utf8');

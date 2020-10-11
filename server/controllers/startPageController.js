@@ -37,7 +37,7 @@ module.exports = function() {
     app.get('/readme', function (req, res, next) {
         const themeName = req.vhost[0];
 
-        const readme = new Theme(themeName).getReadme();
+        const readme = new Theme(themeName).getAbout();
 
         res.render('readme', {
             layout: 'common',
