@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
+const ejs = require('ejs');
 const markdownRenderer = require('../markdownRenderer.js');
 
 const helpers = require('../helpers.js');
@@ -70,15 +71,35 @@ module.exports = class Theme {
 
         return null;
     }
+    isIndexTemplate() {
+        return fs.existsSync(this.getPath() + '/index.ejs')
+    }
+    getIndexHtml() {
+        const html = fs.readFileSync(this.getPath() + '/index.html', { encoding: 'utf8', flag: 'r' })
+
+        return html
+    }
+    getIndexTemplate() {
+        const template = fs.readFileSync(this.getPath() + '/index.ejs', { encoding: 'utf8', flag: 'r' })
+
+        return template
+    }
     /**
      * Get the HTML for the start page.
      * @param {boolean} withAnalytics If the HTML should include analytics.
      * @returns {string}
      */
-    getIndexHtml(withAnalytics) {
+    getUserStartPageHtml(data) {
+        if (this.isIndexTemplate()) {
+            const template = this.getIndexTemplate();
+            return ejs.render(template, { data: data })
+        } else {
+            return this.getIndexHtml()
+        }
+    }
+    getIndex(withAnalytics) {
         const meta = this.getMeta();
-        const root = this.getPath();
-        const html = fs.readFileSync(path.join(root, 'index.html'), 'utf-8');
+        const html = this.getUserStartPageHtml(this.getDefaultdata())
 
         const $ = cheerio.load(html);
 

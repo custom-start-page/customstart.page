@@ -190,7 +190,7 @@ module.exports = function() {
 
         if (filePath === 'index.html' && req.query.iframe !== 'true') {
             var withAnalytics = req.query.iframe !== 'true';
-            var html = theme.getIndexHtml(withAnalytics);
+            var html = theme.getIndex(withAnalytics);
 
             res.send(html);
         } else {
