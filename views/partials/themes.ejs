@@ -1,21 +1,21 @@
 <% for (let theme of themes) { %>
     <div class="col-lg-4">
         <div class="panel panel-default">
-            <a href="//<%= theme.slug %>.<%- config.domain %>:/preview">
+            <a href="//<%= theme.getSlug() %>.<%- config.domain %>:/preview">
                 <div class="panel-heading">
-                    <h2 class="panel-title"><%= theme.name %></h2>
+                    <h2 class="panel-title"><%= theme.getMeta().name %></h2>
                 </div>
                 <div class="panel-image-container">
-                    <img width="100%" src="//<%= theme.slug %>.<%- config.domain %>:/manifest/<%= theme.preview %>" />
+                    <img width="100%" src="//<%= theme.getSlug() %>.<%- config.domain %>:<%= theme.getPreview() %>" />
                     <ul class="pills">
-                        <% theme.features.forEach(feature => { %>
+                        <% theme.getMeta().features.forEach(feature => { %>
                             <li><%= feature %></li>
                         <% }) %>
                     </ul>
                 </div>
             </a>
             <div class="panel-footer">
-                by <a href="<%= theme.author.link %>" target="_blank"><%= theme.author.name %></a>
+                by <a href="<%= theme.getMeta().author.link %>" target="_blank"><%= theme.getMeta().author.name %></a>
             </div>
         </div>
         </a>
