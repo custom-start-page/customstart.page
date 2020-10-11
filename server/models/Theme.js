@@ -58,9 +58,17 @@ module.exports = class Theme {
         return schema;
     }
     getDefaultdata() {
-        const data = JSON.parse(fs.readFileSync('./pages/' + this.themeFolderName + '/manifest/defaultData.json', 'utf8'));
+        let defaultDataPath = './pages/' + this.themeFolderName + '/manifest/defaultData.json';
 
-        return data;
+        if (fs.existsSync(defaultDataPath))
+            return JSON.parse(fs.readFileSync(defaultDataPath, 'utf8'));
+
+        defaultDataPath = './pages/' + this.themeFolderName + '/manifest/default-data.json';
+
+        if (fs.existsSync(defaultDataPath))
+            return JSON.parse(fs.readFileSync(defaultDataPath, 'utf8'));
+
+        return null;
     }
     /**
      * Get the HTML for the start page.

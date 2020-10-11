@@ -95,7 +95,12 @@ module.exports = function() {
         if (req.session.userId === false || fs.existsSync(userDataLocation) === false) {
             const defaultData = new Theme(themeName).getDefaultdata();
 
-            res.json(defaultData);
+            if (defaultData != null) {
+                res.json(defaultData);
+            }
+
+            res.status(404);
+            res.end();
         } else {
             const data = JSON.parse(fs.readFileSync(userDataLocation, 'utf8'));
 
