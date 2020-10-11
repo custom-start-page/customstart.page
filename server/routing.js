@@ -38,7 +38,7 @@ const routing = function() {
 
     require('./apiControllers/notificationController.js')();
 
-    require('./controllers/startController.js')();
+    require('./controllers/startPageController.js')();
 
     /////////////////
     // Static files
