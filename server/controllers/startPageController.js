@@ -188,7 +188,7 @@ module.exports = function() {
             }
         };
 
-        if (filePath === 'index.html' && req.query.iframe !== 'true') {
+        if (filePath === 'index.html') {
             var withAnalytics = req.query.iframe !== 'true';
             var html = theme.getIndex(withAnalytics);
 
