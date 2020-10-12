@@ -1,12 +1,10 @@
 {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "name": "Retroracle",
-    "slug": "retroracle",
     "author": {
         "name": "EndingTransmission",
         "link": "https://codepen.io/EndingTransmission/"
     },
-    "preview": "preview.png",
     "features": [
         "background",
         "links"
