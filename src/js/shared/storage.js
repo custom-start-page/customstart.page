@@ -36,7 +36,11 @@ class CustomStartStorageCookieStorage {
         this.key = 'customstart-data';
     }
     async set(obj) {
-        Cookies.set(this.key, JSON.stringify(obj), { expires: 365, sameSite: 'strict' });
+        Cookies.set(this.key, JSON.stringify(obj), {
+            expires: 365,
+            /* Must be None so that the page can be loaded in an iframe (like when using https://github.com/methodgrab/firefox-custom-new-tab-page) otherwise the cookies can't be loaded in that iframe?! */
+            sameSite: 'None'
+        });
     }
     delete() {
         return Cookies.remove(this.key);
