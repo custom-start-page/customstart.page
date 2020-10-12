@@ -8,6 +8,7 @@ const Theme = require('../models/Theme.js');
 
 module.exports = function() {
     app.use('/js/shared/',  express.static('./public/js/shared/'));
+    app.use('/csp/js/storage.js',  express.static(process.cwd() + '/public/js/shared/storage.min.js'));
 
     app.get('/edit', (req, res) => {
         res.redirect('/settings');
