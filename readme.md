@@ -8,9 +8,9 @@
 
 ![Homepage](/.github/assets/2020-01-12/index.jpg)
 
-### Edit page
+### Settings page
 
-![Edit](/.github/assets/2020-01-12/edit.png)
+![Settings](/.github/assets/2020-01-12/edit.png)
 
 ## About
 

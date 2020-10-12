@@ -11,7 +11,7 @@ ReactDOM.render((
     <Tabs forceRenderTabPanel="true">
         <TabList>
             <Tab>Preview</Tab>
-            <Tab>Edit</Tab>
+            <Tab>Settings</Tab>
             <Tab>About</Tab>
         </TabList>
         <div className="tab-panel-container">
@@ -19,7 +19,7 @@ ReactDOM.render((
                 <iframe id="iframe-preview" className="embed-responsive-item" src="/?iframe=true"></iframe>
             </TabPanel>
             <TabPanel>
-                <iframe className="edit-container" src="/edit?hideFooter=true"></iframe>
+                <iframe className="settings-container" src="/settings?hideFooter=true"></iframe>
             </TabPanel>
             <TabPanel>
                 <iframe src="/readme"></iframe>

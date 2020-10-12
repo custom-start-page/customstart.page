@@ -9,15 +9,19 @@ const Theme = require('../models/Theme.js');
 module.exports = function() {
     app.use('/js/shared/',  express.static('./public/js/shared/'));
 
-    app.get('/edit', function (req, res, next) {
+    app.get('/edit', (req, res) => {
+        res.redirect('/settings');
+    });
+
+    app.get('/settings', function (req, res, next) {
         const themeName = req.vhost[0];
         const hideFooter = req.query.hideFooter == 'true' || false;
 
-        res.render('edit', {
+        res.render('settings', {
             layout: 'common',
             relativeUrl: '',
             hideFooter: hideFooter,
-            metaDescription: `Edit the ${themeName} startpage.`,
+            metaDescription: `Edit the ${themeName} startpage settings.`,
             noindex: true,
         });
     });
