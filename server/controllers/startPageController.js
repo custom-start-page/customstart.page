@@ -157,7 +157,6 @@ module.exports = function() {
     app.get('/*', (req, res, next) => {
         const themeName = req.vhost[0];
         const theme = new Theme(themeName);
-        const meta = theme.getMeta();
         const filePath = getFilePath(req);
 
         const root = theme.getPath();
@@ -189,8 +188,13 @@ module.exports = function() {
         };
 
         if (filePath === 'index.html') {
-            var withAnalytics = req.query.iframe !== 'true';
-            var html = theme.getIndex(withAnalytics);
+            const withAnalytics = req.query.iframe !== 'true';
+            const dataCookie = req.cookies['customstart-data'];
+            const data = dataCookie != null
+                ? JSON.parse(dataCookie)
+                : theme.getDefaultData();
+
+            const html = theme.getIndex(withAnalytics, data);
 
             res.send(html);
         } else {

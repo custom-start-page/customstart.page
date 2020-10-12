@@ -97,9 +97,9 @@ module.exports = class Theme {
             return this.getIndexHtml()
         }
     }
-    getIndex(withAnalytics) {
+    getIndex(withAnalytics, data) {
         const meta = this.getMeta();
-        const html = this.getUserStartPageHtml(this.getDefaultdata())
+        const html = this.getUserStartPageHtml(data)
 
         const $ = cheerio.load(html);
 

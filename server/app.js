@@ -1,4 +1,5 @@
 var cookieSession = require('cookie-session')
+var cookieParser = require('cookie-parser');
 
 const config = require('./config.json');
 const uuid = require('./uuid');
@@ -23,6 +24,8 @@ app.use(cookieSession({
     // Though this won't work with localhost and subdomains :(
     domain: config.domain,
 }));
+
+app.use(cookieParser());
 
 app.use((req, res, next) => {
     if (typeof req.session.userId === 'undefined') {

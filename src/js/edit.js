@@ -15,46 +15,29 @@ async function getSchema() {
         .catch(err => { throw err });
 }
 
-
 const del = () => {
     storage.delete();
 
     window.parent.reloadPreview();
 };
 
-
 const isPreview = () => {
     return typeof window.parent.reloadPreview !== 'undefined';
 }
 
+const saveAndUpdatePreview = () => {
+    window.parent.reloadPreview();
+};
+
 async function render() {
     const originalFormData = await storage.get();
     const schema = await getSchema();
-    let formData = null;
-    let formAction = function() { console.error('No action set.'); };
-
-    const previewButton = isPreview()
-        ?  <button className="btn btn-success" onClick={() => { formAction = saveAndUpdatePreview; }}>Save and update preview</button>
-        : '';
 
     const submit = (data) => {
-        formData = data.formData;
+        storage.set(data.formData);
 
-        storage.set(formData);
-
-        console.log(formData);
-
-        alert('Saved!');
-
-        formAction();
-    };
-
-    const saveAndUpdatePreview = () => {
-        window.parent.reloadPreview();
-    };
-
-    const save = () => {
-
+        if (isPreview())
+            saveAndUpdatePreview();
     };
 
     ReactDOM.render((
@@ -67,9 +50,8 @@ async function render() {
         >
             <footer className="sticky-footer">
                 <div className="container ">
-                    {previewButton}
                     <div class="pull-right">
-                        <button className="btn btn-primary" onClick={() => { formAction = save; }}>Save</button>
+                        <button className="btn btn-primary">Save{ isPreview() ? " and update preview" : "" }</button>
                         &nbsp;
                         <a href="/" target="_blank" class="btn btn-warning">View start page</a>
                     </div>
