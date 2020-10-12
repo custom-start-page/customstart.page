@@ -58,7 +58,7 @@ module.exports = class Theme {
 
         return schema;
     }
-    getDefaultdata() {
+    getDefaultData() {
         let defaultDataPath = './pages/' + this.themeFolderName + '/manifest/defaultData.json';
 
         if (fs.existsSync(defaultDataPath))

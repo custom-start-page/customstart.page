@@ -93,7 +93,7 @@ module.exports = function() {
         const userDataLocation = `./user-data/${req.session.userId}.json`;
 
         if (req.session.userId === false || fs.existsSync(userDataLocation) === false) {
-            const defaultData = new Theme(themeName).getDefaultdata();
+            const defaultData = new Theme(themeName).getDefaultData();
 
             if (defaultData != null) {
                 res.json(defaultData);
