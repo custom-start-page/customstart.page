@@ -40,6 +40,18 @@ async function render() {
             saveAndUpdatePreview();
     };
 
+    const resetData = (e) => {
+        console.log(e)
+        e.preventDefault();
+
+        storage.delete();
+
+        if (isPreview())
+            saveAndUpdatePreview();
+
+        window.location.reload();
+    };
+
     ReactDOM.render((
         <Form
             schema={schema}
@@ -50,6 +62,7 @@ async function render() {
         >
             <footer className="sticky-footer">
                 <div className="container ">
+                    <a className="btn btn-danger" href="#" onClick={resetData}>Reset data</a>
                     <div class="pull-right">
                         <button className="btn btn-primary">Save{ isPreview() ? " and update preview" : "" }</button>
                         &nbsp;
