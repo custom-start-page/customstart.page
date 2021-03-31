@@ -6,7 +6,6 @@ const uuid = require('./uuid');
 
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
-const compression = require('compression');
 const cors = require('cors');
 const bodyParser = require('body-parser')
 const logger = require('./logger.js');
@@ -50,9 +49,6 @@ app.use(vhost('*.' + config.domain, startApp));
 startApp.use(bodyParser.urlencoded({ extended: false }))
 // Parse application/json
 startApp.use(bodyParser.json())
-
-mainApp.use(compression());
-startApp.use(compression());
 
 mainApp.use(cors());
 
