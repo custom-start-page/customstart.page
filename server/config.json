@@ -1,6 +1,6 @@
 {
     "domain": "customstart.local",
-    "port": 80,
+    "port": 8080,
     "type": "node",
     "useServiceWorker": false,
     "dev": false
