@@ -1,7 +1,0 @@
-{
-    "domain": "customstart.local",
-    "port": 8080,
-    "type": "node",
-    "useServiceWorker": false,
-    "dev": false
-}

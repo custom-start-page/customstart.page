@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="436ee552-dfc8-4ff5-9a16-d79c448d91e3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.babelrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.drone.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/assets/2020-01-07/edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/assets/2020-01-07/index.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/assets/2020-01-12/edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/assets/2020-01-12/index.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/assets/domain-ideas.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/assets/logo.xcf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/competition.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/faq.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/help.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/how-to-set-my-startpage.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/how-to-set-my-startpage.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/index.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200112.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200112.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200127.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200127.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200318.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200318.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200319.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200319.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200406.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200406.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200410.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200410.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200413.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200413.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200512.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200512.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200915.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20200915.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20201002.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20201002.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20201012.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20201012.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20241022.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/news/20241022.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iis/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iis/web.config.iisnode" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/apollo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/ascii-start/index.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/ascii-start/manifest/about.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/ascii-start/manifest/default-data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/ascii-start/manifest/meta.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/ascii-start/manifest/preview.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/ascii-start/manifest/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/ascii-start/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/ayrs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bios/bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bios/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bios/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bios/manifest/defaultData.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bios/manifest/meta.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bios/manifest/preview.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bios/manifest/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/defaukt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/distract" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/jazz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/minimum-viable-startpage" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retro-crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/images/circling-ball-black-back.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/images/hypnotize_out.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/manifest/about.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/manifest/default-data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/manifest/meta.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/manifest/preview.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/manifest/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/storage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/retroracle/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/sui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/js/edit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/js/react-dom.production.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/js/react-jsonschema-form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/js/react.production.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/csp/js/storage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/manifest/defaultData.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/manifest/meta.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/manifest/preview.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/manifest/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/manifest/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/template/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/tilde-enhanced" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/google1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/manifest/about.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/manifest/default-data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/manifest/meta.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/manifest/preview.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/manifest/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/storage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/test.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/test.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/wave/wave.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/manifest/about.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/manifest/default-data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/manifest/meta.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/manifest/preview.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/manifest/schema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/res/book.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/res/cogs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/res/desk.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/res/folder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/res/globe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/res/printer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/res/screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/win95/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/dependencies/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/Arimo-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/news/20201012-reset-data.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/dependencies/react-dom.development.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/dependencies/react-dom.production.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/dependencies/react-jsonschema-form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/dependencies/react-tabs.production.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/dependencies/react.development.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/dependencies/react.production.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/apiControllers/notificationController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/indexController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/newsController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/pageController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/startPageController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/helpers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/logger.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/markdownRenderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Theme.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routing.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/uuid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/preview.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/settings.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/shared/inject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/shared/storage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/view.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sass/components/footer.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sass/components/header.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sass/components/panels.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sass/components/pills.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sass/components/preview.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sass/main.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/common.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/news.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/page.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/analytics.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/header.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/scripts.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/themes.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/preview.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/readme.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/settings.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/view.ejs" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2nno7zc6Ss9u7rIF9Jg8kla6o2p" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "deno.use.library": "true",
+    "git-widget-placeholder": "v2",
+    "last_opened_file_path": "C:/data/dev/random/customstartpage/customstart.page/views",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\data\dev\random\customstartpage\customstart.page\views" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-WS-242.20224.342" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="436ee552-dfc8-4ff5-9a16-d79c448d91e3" name="Changes" comment="" />
+      <created>1729618038102</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729618038102</updated>
+      <workItem from="1729618039161" duration="4820000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
