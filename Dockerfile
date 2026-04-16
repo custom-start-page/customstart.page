@@ -1,4 +1,4 @@
-FROM node:8 AS build
+FROM node:8-alpine AS build
 WORKDIR /app
 
 COPY package*.json ./
@@ -10,7 +10,7 @@ COPY . ./
 RUN npm run-script build
 RUN sh dist.sh
 
-FROM node:8 AS runtime
+FROM node:8-alpine AS runtime
 WORKDIR /app
 
 ENV NODE_ENV=production
