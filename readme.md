@@ -45,10 +45,6 @@ You can check the `./Dockerfile` for better information about running this appli
 
 The default domain is `customstart.localhost`, which resolves to `127.0.0.1` without needing to edit your hosts file. You can change this in `server/config.json`.
 
-## Releasing/building
-
-Read [build.md](build.md).
-
 ## Issues
 
 ### Embedding the startpage with control from the outside
