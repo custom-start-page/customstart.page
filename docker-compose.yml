@@ -1,5 +1,3 @@
-version: "3.4"
-
 services:
   custom-start-page:
     build:
