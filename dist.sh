@@ -9,5 +9,5 @@ cp server.js dist/
 cp -r views dist/
 cp -r server dist/
 cp -r public dist/
-# cp -r pages dist/
+cp -r pages dist/
 cp -r data dist/

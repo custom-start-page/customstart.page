@@ -39,8 +39,9 @@ I built this project in my spare time and hope to continue supporting it, but up
 
 You can check the `./Dockerfile` for better information about running this application.
 
-1. Run `npm start` in the base directory
-2. Navigate to `http://customstart.localhost`
+1. Clone the submodules: `git submodule update --init --recursive`
+2. Run `npm start` in the base directory
+3. Navigate to `http://customstart.localhost`
 
 The default domain is `customstart.localhost`, which resolves to `127.0.0.1` without needing to edit your hosts file. You can change this in `server/config.json`.
 
