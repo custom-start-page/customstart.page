@@ -39,14 +39,10 @@ I built this project in my spare time and hope to continue supporting it, but up
 
 You can check the `./Dockerfile` for better information about running this application.
 
-1. Configure your hosts file to look something like this:
-    ```
-    127.0.0.1 customstart.local
-    127.0.0.1 minimum-viable-startpage.customstart.local
-    ```
-2. Edit the `server/config.json` file to have the domain name you chose in the hosts file
-3. Run `npm start` in the base directory
-4. Navigate to the domain you chose in the hosts file
+1. Run `npm start` in the base directory
+2. Navigate to `http://customstart.localhost`
+
+The default domain is `customstart.localhost`, which resolves to `127.0.0.1` without needing to edit your hosts file. You can change this in `server/config.json`.
 
 ## Releasing/building
 
