@@ -35,11 +35,12 @@
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.2",
     "node-notifier": "^5.2.1",
     "nodemon": "^1.17.3",
+    "sass": "^1.77.0",
     "tail": "^2.0.1"
   }
 }
