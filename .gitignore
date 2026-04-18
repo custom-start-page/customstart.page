@@ -13,4 +13,6 @@ public/js/**/*.min.js.map
 
 secrets.yml
 
+.env
+
 *~

@@ -1,7 +1,6 @@
 var cookieSession = require('cookie-session')
 var cookieParser = require('cookie-parser');
 
-const config = require('./config.json');
 const uuid = require('./uuid');
 
 const express = require('express');
@@ -18,10 +17,6 @@ app.use(cookieSession({
 
     // Cookie Options
     maxAge: 24 * 60 * 60 * 1000 * 365, // 365 days
-    // Sets `HostOnly` to false: https://stackoverflow.com/questions/12387338/what-is-a-host-only-cookie
-    // So subdomains can share cookies.
-    // Though this won't work with localhost and subdomains :(
-    domain: config.domain,
 }));
 
 app.use(cookieParser());
@@ -31,9 +26,20 @@ app.use((req, res, next) => {
         req.session.userId = uuid();
     }
 
-    // logger.info(req.subdomains, req.originalUrl, req.session.userId);
-    // logger.info(req.session.userId);
+    next();
+});
 
+// Set request-aware config so templates always use the correct domain.
+app.use((req, res, next) => {
+    const hostname = req.hostname;
+    const matched = global.config.domains.find(d => hostname === d || hostname.endsWith('.' + d))
+        || global.config.domains[0];
+    const port = global.config.port;
+    res.locals.config = {
+        ...global.config,
+        domain: matched,
+        fullDomain: '//' + matched + (port === 80 || port === 443 ? '' : ':' + port),
+    };
     next();
 });
 
@@ -42,8 +48,10 @@ var vhost = require('vhost');
 var mainApp = express();
 var startApp = express();
 
-app.use(vhost(config.domain, mainApp));
-app.use(vhost('*.' + config.domain, startApp));
+global.config.domains.forEach(domain => {
+    app.use(vhost(domain, mainApp));
+    app.use(vhost('*.' + domain, startApp));
+});
 
 // Parse application/x-www-form-urlencoded
 startApp.use(bodyParser.urlencoded({ extended: false }))

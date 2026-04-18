@@ -3,7 +3,6 @@ const express = require('express');
 const app =  require('./app.js').main;
 const logger = require('./logger.js');
 const data = require('./data.js');
-const config = require('./config.json');
 
 const setupController = (page) => {
     try {
@@ -48,7 +47,7 @@ const routing = function() {
     // Just used for verifying SSL with Let's Encrypt.
     app.use('/.well-known', express.static('./.well-known'));
 
-    if (config.dev == true) {
+    if (global.config.dev == true) {
         app.use(express.static('./src'));
     }
 

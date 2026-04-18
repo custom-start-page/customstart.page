@@ -5,3 +5,4 @@ services:
       target: runtime
     ports:
       - "80:80"
+    env_file: .env
