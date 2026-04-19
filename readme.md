@@ -43,7 +43,7 @@ You can check the `./Dockerfile` for better information about running this appli
 2. Run `npm start` in the base directory
 3. Navigate to `http://customstart.localhost`
 
-The default domain is `customstart.localhost`, which resolves to `127.0.0.1` without needing to edit your hosts file. You can change this in `server/config.json`.
+The default domain is `customstart.localhost`, which resolves to `127.0.0.1` without needing to edit your hosts file. You can change this by copying `.env.example` to `.env` and setting the `DOMAINS` variable (comma-separated for multiple domains).
 
 ## Issues
 
