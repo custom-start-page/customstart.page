@@ -35,10 +35,12 @@ app.use((req, res, next) => {
     const matched = global.config.domains.find(d => hostname === d || hostname.endsWith('.' + d))
         || global.config.domains[0];
     const port = global.config.port;
+    const portSuffix = global.config.dev ? ':' + port : '';
     res.locals.config = {
         ...global.config,
         domain: matched,
-        fullDomain: '//' + matched + (port === 80 || port === 443 ? '' : ':' + port),
+        portSuffix,
+        fullDomain: '//' + matched + portSuffix,
     };
     next();
 });

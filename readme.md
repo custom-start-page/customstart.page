@@ -45,6 +45,8 @@ You can check the `./Dockerfile` for better information about running this appli
 
 The default domain is `customstart.localhost`, which resolves to `127.0.0.1` without needing to edit your hosts file. You can change this by copying `.env.example` to `.env` and setting the `DOMAINS` variable (comma-separated for multiple domains).
 
+When `DEV=true`, the port is included in generated URLs (e.g. `//theme.customstart.localhost:3000`) so subdomains resolve correctly when running without a reverse proxy. When `DEV=false` (production), the port is never included in URLs — this is intentional, as the app is expected to sit behind a reverse proxy that handles port mapping and SSL termination.
+
 ## Issues
 
 ### Embedding the startpage with control from the outside
